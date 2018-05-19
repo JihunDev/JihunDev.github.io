@@ -1,2 +1,2 @@
 # JihunDev.github.io
-Blog
+Jekyll + Minimal Mistake Theme

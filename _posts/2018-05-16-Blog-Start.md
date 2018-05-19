@@ -2,10 +2,13 @@
 title: 블로그를 시작하며
 categories:
   - Blog
+  
 tags:
   - Start
 
 toc: false
+toc_label: "On This Page"
+toc_icon: "cog"
 
 ---
 

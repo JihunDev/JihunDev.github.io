@@ -269,6 +269,3 @@ defaults:
       comments:  true
       share:  true
       related: true
-      toc: true
-      toc_label: "On This Page"
-      toc_icon: "cog"
