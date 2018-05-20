@@ -4,7 +4,6 @@ categories:
   - Blog
   
 tags:
-  - Start
 
 toc: false
 toc_label: "On This Page"
@@ -16,6 +15,6 @@ toc_icon: "cog"
 
 예전부터 블로그를 시작하려다 귀찬음에 안하고 있다가 좋은 기회가 되어 시작합니다.
 
-블로그를 시작하려니 마크다운부터 할게 많네요.
+블로그를 시작하려니 마크다운부터 익숙해져야겠네요.
 
 열심히 해볼까합니다.

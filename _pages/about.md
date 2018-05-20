@@ -6,6 +6,8 @@ author_profile: true
 
 ---
 
+# About
+
 ## Profile
 - Name : Ji hun Kim
 - Job : Developer
@@ -14,8 +16,11 @@ author_profile: true
 - C
 - C++
 - 임베디드 C
+- Java
 
 ## IDE
 - Vim
 - CLion
+
+## Project
 
