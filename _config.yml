@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "메케메케의 코딩하는 언덕"
+title                    : "Jihun`s Dev note"
 title_separator          : "-"
 name                     : "Jihun Kim"
-description              : "S/W Engineer"
+description              : "Developer"
 url                      : "https://jihundev.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "JihunDev/JihunDev.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
