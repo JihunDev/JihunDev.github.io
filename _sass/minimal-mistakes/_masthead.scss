@@ -15,7 +15,9 @@
     @include clearfix;
     margin-left: auto;
     margin-right: auto;
-    padding: 1em;
+    // padding: 1em;
+    /* 메뉴 바 크기 조정 */
+    padding: 0.4em;
     max-width: 100%;
     display: -webkit-box;
     display: flex;
