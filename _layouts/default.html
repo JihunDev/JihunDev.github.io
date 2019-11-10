@@ -29,12 +29,14 @@
       </div>
     {% endif %}
 
+    <div id="footer" class="page__footer">
+      <footer class="page__footer">
+          {% include footer/custom.html %}
+          {% include footer.html %}
+      </footer>
+    </div>
+
     {% include scripts.html %}
 
   </body>
-
-  <footer class="page__footer">
-      {% include footer/custom.html %}
-      {% include footer.html %}
-  </footer>
 </html>
