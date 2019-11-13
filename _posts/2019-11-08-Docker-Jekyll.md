@@ -9,6 +9,9 @@ toc: true
 toc_label: "On This Page"
 toc_icon: "cog"
 ---
+
+Docker로 Jekyll 사용하여 홈페이지 관리
+
 ![Docker/Jekyll](https://i.imgur.com/fpPqT7O.png)
 
 ## 처음 Jekyll 사용자
@@ -31,5 +34,4 @@ $ docker run --volume="$PWD:/src/jekyll" -p 4000:4000 -it jekyll/jekyll jekyll s
 
 ## reference
 [DockerHub-jekyll](https://hub.docker.com/r/jekyll/jekyll/)
-
 [Running Jekyll in Docker](https://ddewaele.github.io/running-jekyll-in-docker/)
