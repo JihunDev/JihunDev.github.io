@@ -1,5 +1,5 @@
 ---
-title: SPI (Serial Peripheral Interface Bus)
+title: mbed DSP Lib 추가 방법
 categories:
   - mbed
   - STM32
