@@ -1,13 +1,8 @@
 ---
+layout: post
 title: RaspberryPi 부팅후 자동실행
-categories:
-  - RaspberryPi
-  
 tags: RaspberryPi
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 라즈베리파이 부팅후 자동실행

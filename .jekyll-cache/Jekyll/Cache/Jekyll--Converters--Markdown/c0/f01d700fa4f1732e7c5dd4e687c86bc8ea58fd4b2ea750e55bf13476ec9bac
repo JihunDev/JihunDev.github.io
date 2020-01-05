@@ -1,0 +1,45 @@
+I"·<p>Nucleo Debugging Setting</p>
+
+<h2 id="download">Download</h2>
+
+<h3 id="windows">Windows</h3>
+
+<p><a href="https://os.mbed.com/teams/ST/wiki/ST-Link-Driver">ST Link Driver</a></p>
+
+<p><a href="https://ko.osdn.net/projects/ttssh2/releases/">Trea Term</a></p>
+
+<h2 id="example-code">Example Code</h2>
+
+<pre><code class="language-C++">#include "mbed.h"
+
+// define the Serial object
+Serial pc(USBTX, USBRX);
+
+DigitalOut led1(LED1);
+
+int main() {
+    while (true) {
+        led1 = !led1;
+
+        // Print something over the serial connection
+        pc.printf("Blink! LED is now %d\r\n", led1.read());
+
+        wait(0.5);
+    }
+}
+</code></pre>
+
+<h2 id="seeing-the-log-message">Seeing the Log Message</h2>
+
+<h3 id="windows-1">Windows</h3>
+
+<ol>
+  <li>open TeraTerm</li>
+  <li>File &gt; New connetion</li>
+  <li>Serial Button</li>
+  <li>Chooce <code class="highlighter-rouge">mbed Serial Port</code></li>
+  <li>Click OK</li>
+  <li>Log message</li>
+</ol>
+
+:ET

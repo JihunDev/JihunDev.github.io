@@ -1,13 +1,8 @@
 ---
+layout: post
 title: ICP Accelerometer Sensor
-categories:
-  - Sensor
-  
 tags: Sensor
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 ICP Accelerometer Sensor

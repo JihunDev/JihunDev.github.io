@@ -1,13 +1,8 @@
 ---
+layout: post
 title: RaspberryPi bluetooth paring
-categories:
-  - ReaspberrPi
-  
-tags: ReaspberrPi
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+tags: RaspberryPi
+comments: true
 ---
 # Bluetooth Pairing
 

@@ -1,0 +1,24 @@
+I"�<p>Docker로 Jekyll 사용하여 홈페이지 관리</p>
+
+<p><img src="https://i.imgur.com/fpPqT7O.png" alt="Docker/Jekyll" /></p>
+
+<h2 id="처음-jekyll-사용자">처음 Jekyll 사용자</h2>
+<p>(추후 업데이트)</p>
+
+<h2 id="기존-jekyll-사용자">기존 Jekyll 사용자</h2>
+
+<h3 id="docker에-jekyll-설치">Docker에 Jekyll 설치</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker pull jekyll/jekyll
+</code></pre></div></div>
+
+<h3 id="docker-jekyll-실행">Docker Jekyll 실행</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/src/jekyll"</span> <span class="nt">-p</span> 4000:4000 <span class="nt">-it</span> jekyll/jekyll jekyll serve
+</code></pre></div></div>
+
+<h3 id="접속-방법">접속 방법</h3>
+<p>접속 URL : http://0.0.0.0:4000/</p>
+
+<h2 id="reference">reference</h2>
+<p><a href="https://hub.docker.com/r/jekyll/jekyll/">DockerHub-jekyll</a>
+<a href="https://ddewaele.github.io/running-jekyll-in-docker/">Running Jekyll in Docker</a></p>
+:ET

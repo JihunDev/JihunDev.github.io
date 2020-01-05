@@ -1,13 +1,8 @@
 ---
+layout: post
 title: Docker로 Jekyll 사용
-categories:
-  - Docker
-  
 tags: Docker Jekyll
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 Docker로 Jekyll 사용하여 홈페이지 관리

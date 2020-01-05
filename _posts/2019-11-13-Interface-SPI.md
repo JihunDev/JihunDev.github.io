@@ -1,13 +1,8 @@
 ---
+layout: post
 title: SPI (Serial Peripheral Interface Bus)
-categories:
-  - Interface
-  
 tags: Interface
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 장치들은 Master Slave 모드로 통신하며, Master 장치는 데이터 프레임 초기화하고 여러 Slave 장치들은 개별 Slave Select라인을 통해 동작

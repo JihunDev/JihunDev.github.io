@@ -1,13 +1,8 @@
 ---
+layout: post
 title: iBeacon 만들기
-categories:
-  - Beacon
-  
 tags: Beacon
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 iBeacon 만드는 비콘 명령어

@@ -1,14 +1,8 @@
 ---
+layout: post
 title: mbed DSP Lib 추가 방법
-categories:
-  - mbed
-  - STM32
-  
 tags: mbed STM32
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 mbed-dsp Lib 추가

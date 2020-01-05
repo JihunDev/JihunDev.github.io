@@ -1,0 +1,125 @@
+I"j<p>장치들은 Master Slave 모드로 통신하며, Master 장치는 데이터 프레임 초기화하고 여러 Slave 장치들은 개별 Slave Select라인을 통해 동작</p>
+
+<h2 id="interface">Interface</h2>
+
+<p>Signal Name</p>
+
+<ul>
+  <li>SCLK : 직렬 클럭(마스터로부터의 출력)</li>
+  <li>MOSI, SIMO : 마스터 출력, 슬레이브 입력(마스터로부터의 출력)</li>
+  <li>MISO, SOMI : 마스터 입력, 슬레이브 출력(슬레이브로부터의 출력)</li>
+  <li>SS : 슬레이브 셀렉트(Active Low, 마스터로부터의 출력)</li>
+</ul>
+
+<p>Alternative Names</p>
+
+<ul>
+  <li>SCK, CLK : 직렬 클럭(마스터부터의 입력)</li>
+  <li>SDI, DI, DIN, SI : 직렬 데이터 입력, 데이터입력, 직렬 입력</li>
+  <li>SDO, DO, DOUT, SO : 직렬 데이터 출력, 데이터 출력, 직렬 출력</li>
+  <li>nCS, CS, CSB, CSB, nSS, STE : 칩 셀렉트, 슬레이브 전송 기능 이용 (Active Low, 마스터로부터의 출력)</li>
+</ul>
+
+<h3 id="간단-요약">간단 요약</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Signal Name</th>
+      <th>Alternative Names</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SCLK</td>
+      <td>SCK, CLK</td>
+      <td>Serial Clock</td>
+    </tr>
+    <tr>
+      <td>MOSI</td>
+      <td>SDI, DI, SI</td>
+      <td>Master Output Slave Input</td>
+    </tr>
+    <tr>
+      <td>MISO</td>
+      <td>SDO, DO, SO</td>
+      <td>Slave Output Master Input</td>
+    </tr>
+    <tr>
+      <td>SS</td>
+      <td>nCS, CS, nSS, STE, CE</td>
+      <td>Slave Select, Chip Enable</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>SCLK - 단순한 동기화 신호, 통신 Clock</p>
+
+<p>MOSI - Master에서 Slave로 가는 방향성이 있는 데이터</p>
+
+<p>MISO - Slave에서 Master로 가는 방향성이 있는 데이터</p>
+
+<p>SS - 하나의 Master장치가 여러개의 Slave 장치와 통신할 때 하나를 선택</p>
+
+<h2 id="동작구조">동작구조</h2>
+
+<p>Circular Queue와 비슷하게 동작</p>
+
+<h2 id="모드-번호">모드 번호</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>모드</th>
+      <th>CPOL</th>
+      <th>CPHA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="spi-장단점">SPI 장단점</h2>
+
+<h3 id="장점">장점</h3>
+
+<ul>
+  <li>완전한 전이중 통신</li>
+  <li>전송 되는 비트에 대한 완전한 프로토콜 유연성</li>
+  <li>전송기가 필요하지 않음 (트랜시버 사용할 필요 없음)</li>
+  <li>매우 단순한 하드웨어 인터페이스 처리</li>
+  <li>IC 패키지에 4개의 핀만 사용하며 이는 병렬 인터페이스에 비해 수가 적다</li>
+</ul>
+
+<h3 id="단점">단점</h3>
+
+<ul>
+  <li>하드웨어 슬레이브 인식이 없음</li>
+  <li>슬레이브에 의한 하드웨어 흐름 제어가 없음</li>
+  <li>오류 검사 프로토콜이 정의되어 있지 않음</li>
+  <li>일반적으로 노이즈 스파이크 영향을 받는 경향이 있음 (통신 문제를 일으킬수 있음)</li>
+  <li>RS-232, RS-485, CAN 버스보다 비교적 더 짧은 거리에서 동작 (칩간 통신에만 이용)</li>
+  <li>하나의 마스터 장비만 지원</li>
+</ul>
+:ET

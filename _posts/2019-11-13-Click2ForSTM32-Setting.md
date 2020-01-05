@@ -1,13 +1,8 @@
 ---
+layout: post
 title: MikroElekronika Click2 For STM32 Setting
-categories:
-  - MikroElekronika
-  
 tags: STM32 MikroElekronika
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 Click2 For STM32 Setting

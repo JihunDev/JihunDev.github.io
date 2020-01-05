@@ -1,13 +1,8 @@
 ---
+layout: post
 title: HPI (Host Port Interface)
-categories:
-  - Interface
-  
 tags: Interface
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 ## HPI (Host Port Interface)

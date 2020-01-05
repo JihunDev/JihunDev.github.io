@@ -1,0 +1,15 @@
+I"�<h2 id="can-utils-install">can-utils Install</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>apt <span class="nb">install </span>can-utils
+</code></pre></div></div>
+
+<h2 id="candump-사용법">candump 사용법</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>candump vcan0
+ vcan0  123   <span class="o">[</span>4]  01 AA BB 22
+ vcan0  123   <span class="o">[</span>4]  01 AA BB 23
+ vcan0  123   <span class="o">[</span>4]  01 AA BB 24
+</code></pre></div></div>
+
+<h2 id="reference">reference</h2>
+<p><a href="https://github.com/linux-can/can-utils">github:can-utils</a></p>
+:ET

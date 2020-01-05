@@ -1,13 +1,8 @@
 ---
+layout: post
 title: Android ADB 이용 SmartPhone 접속
-categories:
-  - Android
-  
 tags: Android ADB
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 Android USB선 없이 디버깅

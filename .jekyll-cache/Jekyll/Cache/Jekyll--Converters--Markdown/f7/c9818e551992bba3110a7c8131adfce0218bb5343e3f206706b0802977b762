@@ -1,0 +1,13 @@
+I"�<p>비글본 블랙 와이파이 접속법</p>
+
+<h2 id="command">Command</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>connmanctl
+connmanctl&gt; tether wifi disable
+connmanctl&gt; <span class="nb">enable </span>wifi
+connmanctl&gt; scan wifi
+connmanctl&gt; services
+connmanctl&gt; agent on
+connmanctl&gt; connect &lt;wifi network&gt;
+connmanctl&gt; quit
+</code></pre></div></div>
+:ET

@@ -1,0 +1,18 @@
+I"@<p>mbed-dsp Lib 추가</p>
+
+<p>mbed에 있는 연산 함수를 사용하려면 mbed-dsp 라이브러리를 추가해줘야한다.</p>
+
+<h2 id="라이브러리-함수-목록">라이브러리 함수 목록</h2>
+
+<p><a href="https://docs.mbed.com/docs/mbed-os-api/en/latest/api/modules.html">mbed moulues</a></p>
+
+<h2 id="lib-추가-방법">Lib 추가 방법</h2>
+
+<ul>
+  <li>
+    <p><a href="https://developer.mbed.org/users/mbed_official/code/mbed-dsp/">mbed-dsp</a></p>
+  </li>
+  <li>Import into Compiler 추가</li>
+  <li>Export to Desktop IDE 이용하여 추가</li>
+</ul>
+:ET

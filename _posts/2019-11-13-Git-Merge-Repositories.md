@@ -1,13 +1,8 @@
 ---
+layout: post
 title: 서로 다른 Repositories 병합
-categories:
-  - Git
-  
 tags: Git
-
-toc: true
-toc_label: "On This Page"
-toc_icon: "cog"
+comments: true
 ---
 
 다른 레파지토리 Git병합 방법
