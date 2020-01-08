@@ -26,7 +26,7 @@ layout: default
   </div>
   
   {% include coffee.html %}
-
+  
   <div class="pagination">
     {% if page.previous.url %}
       <span class="prev" >
@@ -44,5 +44,6 @@ layout: default
     {% endif %}
   </div>
 
+  {% include utterances.html %}
   {% include disqus.html %}
 </article>
