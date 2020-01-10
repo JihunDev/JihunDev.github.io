@@ -1,0 +1,97 @@
+I"+<p>데이터 수집(DAQ)은 전압, 전류, 온도, 압력, 소음등 전기 또는 물리적인 현상을 측정하는 과정</p>
+
+<h2 id="daq-시스템-구성">DAQ 시스템 구성</h2>
+
+<p>Sensor - DAQ Device - Computer</p>
+
+<ul>
+  <li>DAQ : Signal Conditioning, Analog To Digital Converter</li>
+  <li>Computer : Driver Software, Application Software</li>
+</ul>
+
+<h2 id="sensor">Sensor</h2>
+
+<ul>
+  <li>센서는 트랜스듀서라고도 하며 물리적인 현상을 측정할 수 있는 전기 신호로 반환</li>
+  <li>센서 유형에 따라 전기 출력의 형태는 전압, 전류, 저항 또는 시간에 따라 변하는 다른 형태의 전기 속성 등이 될수있다</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>센서</th>
+      <th>현상</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>열전쌍, RTD, 써미스터</td>
+      <td>온도</td>
+    </tr>
+    <tr>
+      <td>광센서</td>
+      <td>빛</td>
+    </tr>
+    <tr>
+      <td>마이크</td>
+      <td>소음</td>
+    </tr>
+    <tr>
+      <td>스트레인 게이지, 압전 센서</td>
+      <td>힘, 압력</td>
+    </tr>
+    <tr>
+      <td>전위차계, LVDT, 광학 엔코더</td>
+      <td>위치, 변위</td>
+    </tr>
+    <tr>
+      <td>가속도계</td>
+      <td>가속도</td>
+    </tr>
+    <tr>
+      <td>pH 전극</td>
+      <td>pH</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="daq">DAQ</h2>
+
+<ul>
+  <li>DAQ 디바이스는 컴퓨터와 외부 신호사이의 인터페이스 역활을 한다</li>
+  <li>DAQ는 신호 컨디셔닝 회로, ADC, 컴퓨터 버스로 구성</li>
+  <li>DAQ는 측정 시스템과 프로세스를 자동화 하기위한 함수도 포함
+    <ul>
+      <li>Ex) 디지털-아날로그 변환기(DAC)는 아날로그 신호와 디지털  I/O라인 입출력 디지털 신호를 출력하고, 카운터/타이머는 디지털 펄스로 카운팅하고 생성</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="daq-디바이스의-주요-측정-요소">DAQ 디바이스의 주요 측정 요소</h3>
+
+<h4 id="신호-컨디셔닝">신호 컨디셔닝</h4>
+
+<ul>
+  <li>신호 또는 외부에서 수집한 신호는 노이즈가 많거나 직접 측정하기에 위험할수있다</li>
+  <li>신호 컨디셔닝 회로는 ADC에 입력하기 적절한 형태로 신호를 조작해준다</li>
+</ul>
+
+<h4 id="adc">ADC</h4>
+
+<ul>
+  <li>아날로그 신호를 디지털 형태로 변환해주는 칩</li>
+  <li>아날로그 신호는 시간에 따라 계속 변하며, ADC는 미리 정의된 속도로 신호의 주기적인 샘플을 수집</li>
+</ul>
+
+<h4 id="컴퓨터-버스">컴퓨터 버스</h4>
+
+<ul>
+  <li>USB, PCI, PCI Express, 이더넷 등 보편적 컴퓨터 버스 형태를 제공</li>
+</ul>
+
+<h2 id="computer">Computer</h2>
+
+<ul>
+  <li>DAQ 작동을 컨트롤하고 측정 데이터를 처리, 시각화 처리 및 저장 기능</li>
+</ul>
+:ET

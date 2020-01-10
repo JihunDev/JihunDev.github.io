@@ -1,0 +1,125 @@
+I"S)<h1 id="raspberrypi-3-b-install-tensorflow">RaspberryPi 3 B+ install Tensorflow</h1>
+
+<h2 id="version">Version</h2>
+<ul>
+  <li>Board Raspberry Pi3 B+</li>
+  <li>OS 2018-06-27-raspbian-stretch-lite</li>
+  <li>Python 3.5.2</li>
+</ul>
+
+<h2 id="guide">Guide</h2>
+<p><a href="https://www.tensorflow.org/install/install_raspbian">TensorFlow on Raspbian</a></p>
+
+<h2 id="install">install</h2>
+
+<h3 id="raspbian-update">Raspbian Update</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get update
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span>
+</code></pre></div></div>
+
+<h3 id="pip-install">pip install</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>python3-pip
+<span class="nv">$ </span>pip3 <span class="nt">-V</span>
+</code></pre></div></div>
+
+<h3 id="altas-install">Altas install</h3>
+<ul>
+  <li>선형 대수 라이브러리</li>
+  <li>numpy 의존성
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>libatlas-base-dev
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="tensorflow-install">Tensorflow install</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip3 intall tensorflow
+</code></pre></div></div>
+
+<h2 id="trouble-shooting">Trouble Shooting</h2>
+
+<h4 id="importerror-no-module-named-pil">ImportError: No module named PIL</h4>
+<h5 id="err-message">Err Message</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@raspberrypi:~/dummy_classification <span class="nv">$ </span>python3 DDD_20180812_interpreter_v1.py
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"DDD_20180812_interpreter_v1.py"</span>, line 4, <span class="k">in</span> &lt;module&gt;
+    from PIL import Image
+ImportError: No module named <span class="s1">'PIL'</span>
+</code></pre></div></div>
+<h5 id="solution">Solution</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
+<span class="nv">$ </span>pip <span class="nb">install </span>pillow
+</code></pre></div></div>
+
+<h4 id="importerror-libopenjp2so7">ImportError: libopenjp2.so.7</h4>
+<h5 id="err-message-1">Err Message</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@raspberrypi:~/dummy_classification <span class="nv">$ </span>python3 DDD_20180812_interpreter_v1.py
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"DDD_20180812_interpreter_v1.py"</span>, line 4, <span class="k">in</span> &lt;module&gt;
+    from PIL import Image
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/PIL/Image.py"</span>, line 64, <span class="k">in</span> &lt;module&gt;
+    from <span class="nb">.</span> import _imaging as core
+ImportError: libopenjp2.so.7: cannot open shared object file: No such file or directory
+</code></pre></div></div>
+<h5 id="solution-1">Solution</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>libopenjp2-7
+</code></pre></div></div>
+
+<h4 id="importerror-libtiffso5">ImportError: libtiff.so.5</h4>
+<h5 id="err-message-2">Err Message</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@raspberrypi:~/dummy_classification <span class="nv">$ </span>python3 DDD_20180812_interpreter_v1.py
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"DDD_20180812_interpreter_v1.py"</span>, line 4, <span class="k">in</span> &lt;module&gt;
+    from PIL import Image
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/PIL/Image.py"</span>, line 64, <span class="k">in</span> &lt;module&gt;
+    from <span class="nb">.</span> import _imaging as core
+ImportError: libtiff.so.5: cannot open shared object file: No such file or directory
+</code></pre></div></div>
+<h5 id="solution-2">Solution</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>libtiff5
+</code></pre></div></div>
+
+<h4 id="importerror-tensorflow_wrap_interpreter_wrapperso">ImportError: tensorflow_wrap_interpreter_wrapper.so</h4>
+<h5 id="err-message-3">Err Message</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@raspberrypi:~/dummy_classification <span class="nv">$ </span>python3 DDD_20180812_interpreter_v1.py
+/usr/lib/python3.5/importlib/_bootstrap.py:222: RuntimeWarning: compiletime version 3.4 of module <span class="s1">'tensorflow.python.framework.fast_tensor_util'</span> does not match runtime version 3.5
+  <span class="k">return </span>f<span class="o">(</span><span class="k">*</span>args, <span class="k">**</span>kwds<span class="o">)</span>
+/usr/lib/python3.5/importlib/_bootstrap.py:222: RuntimeWarning: builtins.type size changed, may indicate binary incompatibility. Expected 432, got 412
+  <span class="k">return </span>f<span class="o">(</span><span class="k">*</span>args, <span class="k">**</span>kwds<span class="o">)</span>
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"DDD_20180812_interpreter_v1.py"</span>, line 53, <span class="k">in</span> &lt;module&gt;
+    prediction <span class="o">=</span> load_and_inteprete<span class="o">(</span>testimages[i], modelfullpath, labelfilefullpath<span class="o">)</span>
+  File <span class="s2">"DDD_20180812_interpreter_v1.py"</span>, line 20, <span class="k">in </span>load_and_inteprete
+    interpreter <span class="o">=</span> interpreter_wrapper.Interpreter<span class="o">(</span><span class="nv">model_path</span><span class="o">=</span>modelpathname<span class="o">)</span>
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/tensorflow/contrib/lite/python/interpreter.py"</span>, line 50, <span class="k">in </span>__init__
+    _interpreter_wrapper.InterpreterWrapper_CreateWrapperCPPFromFile<span class="o">(</span>
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/tensorflow/python/util/lazy_loader.py"</span>, line 53, <span class="k">in </span>__getattr__
+    module <span class="o">=</span> self._load<span class="o">()</span>
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/tensorflow/python/util/lazy_loader.py"</span>, line 42, <span class="k">in </span>_load
+    module <span class="o">=</span> importlib.import_module<span class="o">(</span>self.__name__<span class="o">)</span>
+  File <span class="s2">"/usr/lib/python3.5/importlib/__init__.py"</span>, line 126, <span class="k">in </span>import_module
+    <span class="k">return </span>_bootstrap._gcd_import<span class="o">(</span>name[level:], package, level<span class="o">)</span>
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 986, <span class="k">in </span>_gcd_import
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 969, <span class="k">in </span>_find_and_load
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 958, <span class="k">in </span>_find_and_load_unlocked
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 673, <span class="k">in </span>_load_unlocked
+  File <span class="s2">"&lt;frozen importlib._bootstrap_external&gt;"</span>, line 673, <span class="k">in </span>exec_module
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 222, <span class="k">in </span>_call_with_frames_removed
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/tensorflow/contrib/lite/python/interpreter_wrapper/tensorflow_wrap_interpreter_wrapper.py"</span>, line 28, <span class="k">in</span> &lt;module&gt;
+    _tensorflow_wrap_interpreter_wrapper <span class="o">=</span> swig_import_helper<span class="o">()</span>
+  File <span class="s2">"/home/pi/.local/lib/python3.5/site-packages/tensorflow/contrib/lite/python/interpreter_wrapper/tensorflow_wrap_interpreter_wrapper.py"</span>, line 24, <span class="k">in </span>swig_import_helper
+    _mod <span class="o">=</span> imp.load_module<span class="o">(</span><span class="s1">'_tensorflow_wrap_interpreter_wrapper'</span>, fp, pathname, description<span class="o">)</span>
+  File <span class="s2">"/usr/lib/python3.5/imp.py"</span>, line 242, <span class="k">in </span>load_module
+    <span class="k">return </span>load_dynamic<span class="o">(</span>name, filename, file<span class="o">)</span>
+  File <span class="s2">"/usr/lib/python3.5/imp.py"</span>, line 342, <span class="k">in </span>load_dynamic
+    <span class="k">return </span>_load<span class="o">(</span>spec<span class="o">)</span>
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 693, <span class="k">in </span>_load
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 666, <span class="k">in </span>_load_unlocked
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 577, <span class="k">in </span>module_from_spec
+  File <span class="s2">"&lt;frozen importlib._bootstrap_external&gt;"</span>, line 914, <span class="k">in </span>create_module
+  File <span class="s2">"&lt;frozen importlib._bootstrap&gt;"</span>, line 222, <span class="k">in </span>_call_with_frames_removed
+ImportError: /home/pi/.local/lib/python3.5/site-packages/tensorflow/contrib/lite/python/interpreter_wrapper/_tensorflow_wrap_interpreter_wrapper.so: undefined symbol: _ZN6tflite12tensor_utils39NeonMatrixBatchVectorMultiplyAccumulateEPKfiiS2_iPfi
+</code></pre></div></div>
+<h5 id="solution-3">Solution</h5>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>fail
+</code></pre></div></div>
+:ET

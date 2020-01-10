@@ -1,0 +1,45 @@
+I"}<h1 id="vcc-vee-vdd-vss">Vcc Vee Vdd Vss</h1>
+
+<p>기본적으로 전자회로의 BJT와 FET의 내용, CMOS의 내용을 숙지</p>
+
+<h1 id="정의">정의</h1>
+
+<ul>
+  <li>Vcc : Voltage @ Collector</li>
+  <li>Vee : Voltage @ Emitter</li>
+  <li>Vdd : Voltage @ Drain</li>
+  <li>Vss : Voltage @ Source</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>BJT</th>
+      <th>FET</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vcc(C)</td>
+      <td>Vdd(D)</td>
+      <td>+ 입력전압</td>
+    </tr>
+    <tr>
+      <td>Vee(E)</td>
+      <td>Vss(S)</td>
+      <td>- 입력 접압</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Vcc : Voltage Of Common Collector(공통 콜랙터 용 전압)</p>
+
+<p>And : Ground, 접지, 보통 0V</p>
+
+<h2 id="참고-문언">참고 문언</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/IC_power-supply_pin">IC power-supply pin</a></p>
+:ET

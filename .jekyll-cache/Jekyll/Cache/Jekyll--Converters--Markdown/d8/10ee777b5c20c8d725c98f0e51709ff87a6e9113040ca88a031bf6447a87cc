@@ -1,0 +1,27 @@
+I"�<h2 id="모니터-없이-pi-접속">모니터 없이 Pi 접속</h2>
+
+<ol>
+  <li>SD카드 boot폴더 접속</li>
+  <li>wpa_supplicant.conf 생성</li>
+  <li>SSH 생성</li>
+  <li>wpa_supplicant.conf에 Code 작성</li>
+</ol>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ctrl_interface</span><span class="o">=</span><span class="kt">DIR</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">wpa_supplicant</span> <span class="n">GROUP</span><span class="o">=</span><span class="n">netdev</span>
+<span class="n">update_config</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">network</span><span class="o">=</span><span class="p">{</span>
+	<span class="n">ssid</span><span class="o">=</span><span class="s">"SSID NAME"</span>
+	<span class="n">psk</span><span class="o">=</span><span class="s">"Password"</span>
+	<span class="n">key_mgmt</span><span class="o">=</span><span class="n">WPA</span><span class="o">-</span><span class="n">PSK</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>공유기에서 RaspberryPi ip확인후 MobaXtem을 사요하여 SSH 접속</li>
+  <li>초기 ID : pi, PW: raspberry</li>
+</ol>
+
+<h2 id="download">Download</h2>
+
+<p><a href="https://mobaxterm.mobatek.net/">MobaXterm Download</a></p>
+:ET

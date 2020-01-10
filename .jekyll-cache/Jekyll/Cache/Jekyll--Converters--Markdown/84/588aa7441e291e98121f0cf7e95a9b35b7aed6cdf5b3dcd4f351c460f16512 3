@@ -1,0 +1,22 @@
+I"<p>다른 레파지토리 Git병합 방법</p>
+
+<ul>
+  <li>서로 다른 레파지토리 병합</li>
+  <li>폴더에 복사해도 넣어도 되지만 그렇게 되면 이력이 안남음</li>
+</ul>
+
+<h2 id="레파지토리-병합">레파지토리 병합</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git remote add project2 ../project2
+<span class="nv">$ </span>git fetch project2
+<span class="nv">$ </span>git merge <span class="nt">--allow-unrelated-histories</span> project2/master
+<span class="nv">$ </span>git remote remove project2
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s1">'Merge projcet2 into project1'</span>
+<span class="nv">$ </span>git push
+</code></pre></div></div>
+
+<h2 id="gitgnore-충돌시">.gitgnore 충돌시</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset .gitgnore
+</code></pre></div></div>
+:ET
