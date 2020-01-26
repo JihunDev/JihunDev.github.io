@@ -30,7 +30,7 @@ navigation:
     url: /tags
 
 # Pagination
-paginate: 7
+paginate: 5
 
 # Includes an icon in the footer for each username you enter
 footer-links:
@@ -106,7 +106,8 @@ plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jekyll-paginate
-
+  - jekyll-toc
+  
 # Exclude these files from your production _site
 exclude:
   - LICENSE
