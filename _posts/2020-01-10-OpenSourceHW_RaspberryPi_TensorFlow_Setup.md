@@ -6,7 +6,7 @@ comments: true
 use_math: true
 ---
 
-# RaspberryPi 3 B+ install Tensorflow
+RaspberryPi 3 B+에 Tensorflow 설치하기
 
 ## Version
 - Board Raspberry Pi3 B+
