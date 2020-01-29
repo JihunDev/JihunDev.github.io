@@ -5,7 +5,7 @@ tags: mbed STM32
 comments: true
 ---
 
-mbed-dsp Lib 추가
+mbed-dsp Lib 추가 방법
 
 mbed에 있는 연산 함수를 사용하려면 mbed-dsp 라이브러리를 추가해줘야한다.
 

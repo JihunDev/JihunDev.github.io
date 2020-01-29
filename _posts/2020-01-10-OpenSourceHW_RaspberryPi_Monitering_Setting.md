@@ -6,6 +6,8 @@ comments: true
 use_math: true
 ---
 
+라즈베리파이 모니터없이 접속하기
+
 ## 모니터 없이 Pi 접속
 
 1. SD카드 boot폴더 접속

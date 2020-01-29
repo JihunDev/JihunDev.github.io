@@ -4,7 +4,8 @@ title: RaspberryPi bluetooth paring
 tags: RaspberryPi
 comments: true
 ---
-# Bluetooth Pairing
+
+라즈베리파이 기본 내장 Bluetooth 페어링 방법
 
 ## 1. Bluez install
 ```shell

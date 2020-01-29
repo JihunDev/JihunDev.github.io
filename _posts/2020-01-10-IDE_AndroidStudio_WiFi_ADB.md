@@ -6,11 +6,14 @@ comments: true
 use_math: true
 ---
 
+안드로이드 WiFi ADB 방법
+
+
 안드로이드 OTG개발중 USB 테스트에 불편함으로 찾음
 
 
 
-# Install
+## Install
 
 1. Prefrences -> Plugins -> Browse Repositories 이동
 

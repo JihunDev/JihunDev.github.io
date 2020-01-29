@@ -6,7 +6,9 @@ comments: true
 use_math: true
 ---
 
-# RaspberryPi3-OS-Setup
+라즈베리 파이 OS 설치 방법
+
+RaspberryPi3-OS-Setup
 
 ## Download
 

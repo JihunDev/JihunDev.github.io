@@ -5,6 +5,8 @@ tags: Interface
 comments: true
 ---
 
+ HPI Interface 설명
+
 ## HPI (Host Port Interface)
 - Host Processor 와 병렬로 데이터를 주고 받을 수있는 병렬포트
 - DSP는 Slave로 동작하기 때문에 Data 전송을 주도 할 수 없음

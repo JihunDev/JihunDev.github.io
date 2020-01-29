@@ -5,7 +5,7 @@ tags: STM32 MikroElekronika
 comments: true
 ---
 
-Click2 For STM32 Setting
+Click2 For STM32 개발 환경 Setting
 
 ## 개발환경
 - MikroC Pro for ARM v.6.0.0

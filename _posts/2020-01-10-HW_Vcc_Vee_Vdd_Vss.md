@@ -6,13 +6,15 @@ comments: true
 use_math: true
 ---
 
-# Vcc Vee Vdd Vss
+ Vcc Vee Vdd Vss 설명
+
+## Vcc Vee Vdd Vss
 
 기본적으로 전자회로의 BJT와 FET의 내용, CMOS의 내용을 숙지
 
 
 
-# 정의
+## 정의
 
 - Vcc : Voltage @ Collector 
 - Vee : Voltage @ Emitter
