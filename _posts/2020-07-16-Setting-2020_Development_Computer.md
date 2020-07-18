@@ -293,11 +293,11 @@ zsh-syntax-highlighting
 ```
 
 #### autojump
-```cshell
+```shell
 $ brew install autojump
 ```
 Plugin 적용
-``` bshh
+``` bash
 plugins=(
     autojump
 )
