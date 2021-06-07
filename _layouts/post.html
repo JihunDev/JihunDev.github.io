@@ -122,9 +122,8 @@ layout: default
 
     {% include post-nav.html %}
 
-    {% include utterances.html %}
-
     {% if site.disqus.comments and page.comments %}
+      {% include utterances.html %}
       {% include disqus.html %}
     {% endif %}
 
