@@ -1,13 +1,19 @@
 ---
-layout: post
 title: Docker로 Jekyll 사용
-tags: Docker Jekyll
+author: Jihun Kim
+date: 2019-11-08 20:55:00 +0800
+categories: [Docker]
+tags: [Docker, Jekyll]
 comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src: https://i.imgur.com/fpPqT7O.png
+  alt: DockerJekyll
 ---
 
 Docker로 Jekyll 사용하여 홈페이지 관리
-
-![Docker/Jekyll](https://i.imgur.com/fpPqT7O.png)
 
 ## Docker에 Jekyll 설치
 ```shell
