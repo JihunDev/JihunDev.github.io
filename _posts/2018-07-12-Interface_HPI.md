@@ -1,11 +1,20 @@
 ---
-layout: post
 title: HPI (Host Port Interface)
-tags: Interface
-comments: true
+author: Jihun Kim
+date: 2018-08-09 20:55:00 +0800
+categories: [HW, Interface]
+tags: [HPI, HW]
+pin: false
+math: false
+mermaid: false
+comments: false
+image:
+  src: 
+  alt: 
+---
 ---
 
- HPI Interface 설명
+HPI Interface 설명
 
 ## HPI (Host Port Interface)
 - Host Processor 와 병렬로 데이터를 주고 받을 수있는 병렬포트
