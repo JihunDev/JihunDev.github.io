@@ -12,6 +12,7 @@ image:
   src: https://i.imgur.com/fpPqT7O.png
   alt: DockerJekyll
 ---
+---
 
 Docker로 Jekyll 사용하여 홈페이지 관리
 
