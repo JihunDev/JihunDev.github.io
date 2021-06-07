@@ -7,7 +7,7 @@ tags: [HPI, HW]
 pin: false
 math: false
 mermaid: false
-comments: false
+comments: true
 image:
   src: 
   alt: 
