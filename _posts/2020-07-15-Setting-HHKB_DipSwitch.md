@@ -1,13 +1,21 @@
 ---
-layout: post
 title: HHKB DipSwitch 설정
-tags: Setting HHKB
+author: Jihun Kim
+date: 2020-07-15 20:55:00 +0800
+categories: [Device]
+tags: [Device, HHKB]
+pin: false
+math: false
+mermaid: false
 comments: true
+image:
+  src: 
+  alt: 
+---
 ---
 
 HHKB Dipswitch 설정
 
----
 ![HHBK DipSwitch](https://i.imgur.com/xYgEitj.png)
 
 ## 모드 선택
