@@ -1,7 +1,7 @@
 ---
 title: SPI (Serial Peripheral Interface Bus)
 author: Jihun Kim
-date: 2018-08-09 20:55:00 +0800
+date: 2019-11-13 20:55:00 +0800
 categories: [HW, Interface]
 tags: [HPI, HW]
 pin: false
