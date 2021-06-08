@@ -1,8 +1,17 @@
 ---
-layout: post
 title: SPI (Serial Peripheral Interface Bus)
-tags: Interface
+author: Jihun Kim
+date: 2018-08-09 20:55:00 +0800
+categories: [HW, Interface]
+tags: [HPI, HW]
+pin: false
+math: false
+mermaid: false
 comments: true
+image:
+  src: 
+  alt: 
+---
 ---
 
 SPI Interface 설명
