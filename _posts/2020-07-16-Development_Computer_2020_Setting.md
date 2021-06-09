@@ -1,14 +1,23 @@
 ---
-layout: post
 title: 2020 My Computer Setting
-tags: Setting
+author: Jihun Kim
+date: 2020-07-16 20:55:00 +0800
+categories: [Device]
+tags: [Device, Mac]
 comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src:
+  alt:
+---
 ---
 
 2020년 컴퓨터 세팅
 
 ## APP
----
+
 - IDE
 
     [Itrem2](https://www.iterm2.com)
