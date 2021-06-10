@@ -1,8 +1,17 @@
 ---
-layout: post
 title: HM-10 Bluetooth 모듈로 iBeacon 만들기
-tags: Bluetooth iBeacon
+author: Jihun Kim
+date: 2020-07-20 00:00:00 +0000
+categories: [HW, Bluetooth]
+tags: [Bluetooth, iBeacon, IoT]
 comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src:
+  alt:
+---
 ---
 
 HM-10 Bluetooth 모듈로 iBeacon 만들기
