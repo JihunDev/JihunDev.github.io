@@ -1,8 +1,17 @@
 ---
-layout: post
 title: RaspberryPi 3B+에 TensorFlow 설치
-tags: TensorFlow RaspberryPi
+author: Jihun Kim
+date: 2020-07-19 00:00:00 +0000
+categories: [Device, RaspberryPi]
+tags: [TensorFlow, RaspberryPi]
 comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src:
+  alt:
+---
 ---
 
 RaspberrPi에서 TensorFlow 사용해야하는 상황이 발생하여 정리
