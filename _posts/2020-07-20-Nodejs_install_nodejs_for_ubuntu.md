@@ -1,8 +1,17 @@
 ---
-layout: post
-title: ubuntu NodeJs 설치
-tags: nodejs ubuntu
+title: ubuntu에 Node.js 설치
+author: Jihun Kim
+date: 2020-07-20 00:00:00 +0000
+categories: [Node.js]
+tags: [Node.js, ubuntu]
 comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src:
+  alt:
+---
 ---
 
 ubuntu nodejs 설치 방법
