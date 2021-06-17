@@ -1,8 +1,17 @@
 ---
-layout: post
 title: RaspberryPi Bluetooth Pairing
-tags: RaspberryPi Bluetooth
+author: Jihun Kim
+date: 2020-07-24 00:00:00 +0000
+categories: [Device, RaspberryPi]
+tags: [RaspberryPi, Bluetooth]
 comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src:
+  alt:
+---
 ---
 
 Bluetooth Pairing 설정 방법
