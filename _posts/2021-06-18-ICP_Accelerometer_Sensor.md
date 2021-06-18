@@ -1,3 +1,19 @@
+---
+title: Accelerometer Sensor
+author: Jihun Kim
+date: 2021-06-18 00:00:00 +0000
+categories: [HW, Sensor]
+tags: [Sensor, Accelerometer]
+comments: true
+pin: false
+math: false
+mermaid: false
+image:
+  src:
+  alt:
+---
+---
+
 # Accelerometer Sensor
 ## ICP Type
 활용 : 진동측정, 사운드측정, 충격측정, 가속도측정 등 보통에서부터 높은 주파수 측정 분석에 적합
