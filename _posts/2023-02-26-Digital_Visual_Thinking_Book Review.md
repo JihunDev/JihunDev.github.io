@@ -9,8 +9,8 @@ pin: false
 math: false
 mermaid: false
 image:
-  src: https://image.aladin.co.kr/Community/paper/2023/0226/pimg_7229551373761195.jpg
-  alt: book
+  src: 
+  alt:
 ---
 ---
 
