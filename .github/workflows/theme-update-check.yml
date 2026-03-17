@@ -1,9 +1,10 @@
+# .github/workflows/theme-update-check.yml
 name: Check Chirpy Theme Update
 
 on:
   schedule:
     - cron: '0 0 * * 1'  # 매주 월요일 한국시간 09:00
-  workflow_dispatch:      # 수동 실행 가능
+  workflow_dispatch:
 
 jobs:
   check-update:
@@ -12,24 +13,27 @@ jobs:
       issues: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Get latest Chirpy release
+      - name: Get latest chirpy-starter release
         id: latest
         run: |
-          LATEST=$(curl -s https://api.github.com/repos/cotes2020/jekyll-theme-chirpy/releases/latest \
-            | jq -r '.tag_name')
-          RELEASE_URL=$(curl -s https://api.github.com/repos/cotes2020/jekyll-theme-chirpy/releases/latest \
-            | jq -r '.html_url')
+          # upstream은 chirpy-starter 레파지토리
+          LATEST=$(curl -s https://api.github.com/repos/cotes2020/chirpy-starter/tags \
+            | jq -r '.[0].name')
+          RELEASE_URL="https://github.com/cotes2020/chirpy-starter/releases/tag/$LATEST"
           echo "version=$LATEST" >> $GITHUB_OUTPUT
           echo "url=$RELEASE_URL" >> $GITHUB_OUTPUT
 
-      - name: Get current version
+      - name: Get current version from Gemfile.lock
         id: current
         run: |
-          CURRENT=$(grep 'spec.version' jekyll-theme-chirpy.gemspec \
+          # Gemfile.lock에서 현재 설치된 테마 버전 확인
+          CURRENT=$(grep -A1 'jekyll-theme-chirpy' Gemfile.lock \
+            | grep 'version' | grep -oP '[\d]+\.[\d]+\.[\d]+' \
+            || grep 'jekyll-theme-chirpy' Gemfile \
             | grep -oP '[\d]+\.[\d]+\.[\d]+')
-          echo "version=v$CURRENT" >> $GITHUB_OUTPUT
+          echo "version=$CURRENT" >> $GITHUB_OUTPUT
 
       - name: Check if issue already exists
         id: check_issue
@@ -43,8 +47,8 @@ jobs:
 
       - name: Create Issue if update available
         if: |
-          steps.latest.outputs.version != steps.current.outputs.version &&
-          steps.check_issue.outputs.exists == '0'
+          steps.check_issue.outputs.exists == '0' &&
+          steps.latest.outputs.version != steps.current.outputs.version
         uses: actions/github-script@v6
         with:
           script: |
@@ -54,10 +58,24 @@ jobs:
               title: 'Theme Update: ${{ steps.latest.outputs.version }}',
               labels: ['theme-update'],
               body: `## Chirpy 테마 업데이트 감지
+
               | | 버전 |
               |---|---|
               | 현재 | \`${{ steps.current.outputs.version }}\` |
-              | 최신 | \`${{ steps.latest.outputs.version }}\` |
-              🔗 [릴리즈 노트](${{ steps.latest.outputs.url }})
+              | 최신 (chirpy-starter) | \`${{ steps.latest.outputs.version }}\` |
+
+              🔗 [chirpy-starter 릴리즈](${{ steps.latest.outputs.url }})
+              🔗 [chirpy 릴리즈 노트](https://github.com/cotes2020/jekyll-theme-chirpy/releases)
+
+              > ⚠️ Major 버전이라면 릴리즈 노트의 Breaking Changes를 먼저 확인하세요.
+
+              ### 업데이트 방법
+              \`\`\`bash
+              git fetch chirpy --tags
+              git merge ${{ steps.latest.outputs.version }} --squash --allow-unrelated-histories
+              # 충돌 해결 후
+              git add . && git commit -m "chore: upgrade to ${{ steps.latest.outputs.version }}"
+              bundle update
+              \`\`\`
               `
             })
