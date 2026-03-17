@@ -1,0 +1,63 @@
+name: Check Chirpy Theme Update
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 한국시간 09:00
+  workflow_dispatch:      # 수동 실행 가능
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get latest Chirpy release
+        id: latest
+        run: |
+          LATEST=$(curl -s https://api.github.com/repos/cotes2020/jekyll-theme-chirpy/releases/latest \
+            | jq -r '.tag_name')
+          RELEASE_URL=$(curl -s https://api.github.com/repos/cotes2020/jekyll-theme-chirpy/releases/latest \
+            | jq -r '.html_url')
+          echo "version=$LATEST" >> $GITHUB_OUTPUT
+          echo "url=$RELEASE_URL" >> $GITHUB_OUTPUT
+
+      - name: Get current version
+        id: current
+        run: |
+          CURRENT=$(grep 'spec.version' jekyll-theme-chirpy.gemspec \
+            | grep -oP '[\d]+\.[\d]+\.[\d]+')
+          echo "version=v$CURRENT" >> $GITHUB_OUTPUT
+
+      - name: Check if issue already exists
+        id: check_issue
+        run: |
+          EXISTS=$(curl -s \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/issues?state=open&labels=theme-update" \
+            | jq --arg title "Theme Update: ${{ steps.latest.outputs.version }}" \
+            '[.[] | select(.title == $title)] | length')
+          echo "exists=$EXISTS" >> $GITHUB_OUTPUT
+
+      - name: Create Issue if update available
+        if: |
+          steps.latest.outputs.version != steps.current.outputs.version &&
+          steps.check_issue.outputs.exists == '0'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Theme Update: ${{ steps.latest.outputs.version }}',
+              labels: ['theme-update'],
+              body: `## Chirpy 테마 업데이트 감지
+              | | 버전 |
+              |---|---|
+              | 현재 | \`${{ steps.current.outputs.version }}\` |
+              | 최신 | \`${{ steps.latest.outputs.version }}\` |
+              🔗 [릴리즈 노트](${{ steps.latest.outputs.url }})
+              `
+            })
