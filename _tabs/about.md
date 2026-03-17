@@ -1,13 +1,8 @@
 ---
-title: About
-icon: fas fa-info
+# the default layout is 'page'
+icon: fas fa-info-circle
 order: 4
 ---
 
-<!-- Header content with avatar and basic info -->
-# My name is Jihun Kim
-
-## Information
-I have a lot of interest and interest in software engineering and productivity.
-
-I've mainly developed embedded Linux systems and firmware, and I'm working on projects using analog sensors.
+> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
+{: .prompt-tip }
