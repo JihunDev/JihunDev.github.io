@@ -1,0 +1,276 @@
+name: "Check Chirpy Version Update"
+
+# ─────────────────────────────────────────────
+# 공식 Upgrade Guide 방식 적용:
+#   git remote add chirpy https://github.com/cotes2020/chirpy-starter.git
+#   git fetch chirpy --tags
+#   git merge vX.Y.Z --squash --allow-unrelated-histories
+#   bundle update
+# ─────────────────────────────────────────────
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # 매주 월요일 오전 9시 (UTC) = 한국시간 오후 6시
+  workflow_dispatch: # Actions 탭에서 수동 실행 가능
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# ─────────────────────────────────────────────
+# Job 1: 버전 비교
+# ─────────────────────────────────────────────
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+    outputs:
+      needs_update: ${{ steps.compare.outputs.needs_update }}
+      current_version: ${{ steps.current.outputs.version }}
+      latest_version: ${{ steps.latest.outputs.version }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Gemfile.lock에서 현재 고정 버전 추출 (예: 7.5.0)
+      - name: Get current version from Gemfile.lock
+        id: current
+        run: |
+          VERSION=$(grep -E "^\s+jekyll-theme-chirpy \(" Gemfile.lock \
+            | grep -oP '\d+\.\d+\.\d+' | head -1)
+          if [ -z "$VERSION" ]; then
+            echo "::error::Gemfile.lock에서 jekyll-theme-chirpy 버전을 찾을 수 없습니다."
+            exit 1
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "📌 Current version: v${VERSION}"
+
+      # chirpy-starter GitHub Releases API로 최신 태그 조회
+      - name: Get latest version from chirpy-starter releases
+        id: latest
+        run: |
+          RESPONSE=$(curl -sf \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/cotes2020/chirpy-starter/releases/latest")
+          if [ $? -ne 0 ]; then
+            echo "::error::chirpy-starter 최신 버전 조회에 실패했습니다."
+            exit 1
+          fi
+          LATEST=$(echo "$RESPONSE" | jq -r '.tag_name' | sed 's/^v//')
+          if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
+            echo "::error::버전 파싱에 실패했습니다."
+            exit 1
+          fi
+          echo "version=${LATEST}" >> $GITHUB_OUTPUT
+          echo "🚀 Latest version: v${LATEST}"
+
+      # 버전 비교
+      - name: Compare versions
+        id: compare
+        run: |
+          CURRENT="${{ steps.current.outputs.version }}"
+          LATEST="${{ steps.latest.outputs.version }}"
+
+          if [ "$CURRENT" = "$LATEST" ]; then
+            echo "✅ 이미 최신 버전입니다 (v${LATEST}). 작업을 종료합니다."
+            echo "needs_update=false" >> $GITHUB_OUTPUT
+          else
+            echo "⬆️ 업데이트 발견: v${CURRENT} → v${LATEST}"
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+          fi
+
+  # ─────────────────────────────────────────────
+  # Job 2: 브랜치 생성 및 PR 오픈
+  # ─────────────────────────────────────────────
+  create-update-branch:
+    needs: check-update
+    if: needs.check-update.outputs.needs_update == 'true'
+    runs-on: ubuntu-latest
+    env:
+      CURRENT_VERSION: ${{ needs.check-update.outputs.current_version }}
+      LATEST_VERSION: ${{ needs.check-update.outputs.latest_version }}
+      BRANCH_NAME: update/chirpy-v${{ needs.check-update.outputs.latest_version }}
+
+    steps:
+      - name: Checkout (full history 필요)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # 이미 해당 버전 브랜치가 존재하면 스킵
+      - name: Check if update branch already exists
+        id: branch_check
+        run: |
+          if git ls-remote --exit-code --heads origin "$BRANCH_NAME" > /dev/null 2>&1; then
+            echo "⚠️ 브랜치 '$BRANCH_NAME' 이 이미 존재합니다. 작업을 건너뜁니다."
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create update branch
+        if: steps.branch_check.outputs.exists == 'false'
+        run: git checkout -b "$BRANCH_NAME"
+
+      # ── 공식 Upgrade Guide Step 1 (1회성 설정) ──────────
+      # chirpy-starter upstream 원격 저장소 추가
+      - name: Add chirpy-starter as upstream remote
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          git remote add chirpy https://github.com/cotes2020/chirpy-starter.git
+          # assets/lib 서브모듈이 있는 경우 ignore 처리
+          git config submodule.assets/lib.ignore all 2>/dev/null || true
+          echo "✅ chirpy upstream 등록 완료"
+
+      # ── 공식 Upgrade Guide Step 2 ──────────────────────
+      # 태그 fetch 후 squash merge 수행
+      - name: Fetch chirpy-starter tags and merge
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          echo "📥 chirpy-starter 태그 fetch 중..."
+          git fetch chirpy "v${LATEST_VERSION}" --tags
+
+          echo "🔀 v${LATEST_VERSION} squash merge 중..."
+          # --squash : upstream 커밋들을 하나로 합쳐 적용
+          # --allow-unrelated-histories : 별개 히스토리 병합 허용
+          # -X theirs : 충돌 시 upstream 변경 사항 우선 적용
+          git merge "v${LATEST_VERSION}" \
+            --squash \
+            --allow-unrelated-histories \
+            -X theirs \
+            --no-commit || true
+
+      # ── 사용자 파일 보존 ─────────────────────────────────
+      # merge로 덮어쓰이지 않아야 할 파일들을 현재 버전(HEAD)으로 복원
+      - name: Restore user-specific files
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          # 복원할 파일/디렉토리 목록
+          PROTECTED_FILES=(
+            "_config.yml"
+            "_data/contact.yml"
+            "_data/share.yml"
+          )
+          PROTECTED_DIRS=(
+            "_posts"
+            "assets/img"
+            ".github/workflows"
+          )
+
+          for f in "${PROTECTED_FILES[@]}"; do
+            if git ls-files --error-unmatch "$f" 2>/dev/null; then
+              git checkout HEAD -- "$f"
+              echo "🔒 보존됨: $f"
+            fi
+          done
+
+          for d in "${PROTECTED_DIRS[@]}"; do
+            if [ -d "$d" ]; then
+              git checkout HEAD -- "$d" 2>/dev/null && echo "🔒 보존됨: $d/" || true
+            fi
+          done
+
+      # ── 공식 Upgrade Guide 마지막 단계 ─────────────────
+      # bundle update로 Gemfile.lock 갱신
+      - name: Setup Ruby
+        if: steps.branch_check.outputs.exists == 'false'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: false
+
+      - name: Run bundle update
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          gem install bundler --no-document
+          bundle update
+
+      # 최종 커밋 및 푸시
+      - name: Commit and push
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "⚠️ 변경사항이 없습니다. 이미 최신 상태일 수 있습니다."
+            exit 0
+          fi
+
+          git commit -m "chore: upgrade chirpy-starter v${CURRENT_VERSION} → v${LATEST_VERSION}
+
+          - chirpy-starter upstream squash merge (공식 Upgrade Guide 방식)
+          - 사용자 파일 보존: _config.yml, _data/, _posts/, assets/img/, .github/workflows/
+          - bundle update 실행으로 Gemfile.lock 갱신"
+
+          git push origin "$BRANCH_NAME"
+
+      # PR 생성 (gh CLI 사용)
+      - name: Create Pull Request
+        if: steps.branch_check.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --title "⬆️ Upgrade chirpy-starter: v${CURRENT_VERSION} → v${LATEST_VERSION}" \
+            --label "dependencies,automated" \
+            --body "## 🎉 Chirpy Starter 버전 업데이트
+
+          | | Version |
+          |:---|:---|
+          | **Before** | \`v${CURRENT_VERSION}\` |
+          | **After**  | \`v${LATEST_VERSION}\` |
+
+          ---
+
+          ### 🔄 적용된 업그레이드 방식
+
+          공식 [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide)에 따라 \`chirpy-starter\` upstream을 squash merge 방식으로 적용했습니다.
+
+          \`\`\`bash
+          git remote add chirpy https://github.com/cotes2020/chirpy-starter.git
+          git fetch chirpy --tags
+          git merge v${LATEST_VERSION} --squash --allow-unrelated-histories
+          bundle update
+          \`\`\`
+
+          ### 🔒 자동으로 보존된 사용자 파일
+
+          아래 파일들은 merge 시 현재 버전을 그대로 유지했습니다:
+
+          - \`_config.yml\` — 블로그 개인 설정
+          - \`_data/contact.yml\`, \`_data/share.yml\`
+          - \`_posts/\` — 블로그 포스트 전체
+          - \`assets/img/\` — 사용자 이미지
+          - \`.github/workflows/\` — GitHub Actions
+
+          > ⚠️ **주의**: \`_config.yml\`에 새로 추가된 설정 키가 있을 수 있으니 반드시 Release Notes를 확인하세요.
+
+          ---
+
+          ### 📋 Release Notes
+
+          - 👉 [chirpy-starter v${LATEST_VERSION}](https://github.com/cotes2020/chirpy-starter/releases/tag/v${LATEST_VERSION})
+          - 👉 [jekyll-theme-chirpy v${LATEST_VERSION}](https://github.com/cotes2020/jekyll-theme-chirpy/releases/tag/v${LATEST_VERSION})
+
+          ---
+
+          ### ✅ Merge 전 확인 체크리스트
+
+          - [ ] Release Notes에서 **Breaking Changes** 및 설정 변경사항 확인
+          - [ ] \`_config.yml\`에 새로 추가된 설정 키가 있는지 비교
+          - [ ] 로컬에서 \`bundle exec jekyll serve\` 실행 후 정상 렌더링 확인
+          - [ ] 모든 포스트가 정상적으로 보이는지 검토
+          - [ ] Pages Deploy 워크플로우 정상 빌드 확인
+          - [ ] 충돌 마커(\`<<<<<<<\`)가 남아있는 파일 없는지 확인
+
+          ---
+
+          > 🤖 이 PR은 [Check Chirpy Version Update](.github/workflows/check-chirpy-update.yml) 워크플로우에 의해 자동 생성되었습니다."
