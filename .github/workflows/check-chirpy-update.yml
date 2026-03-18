@@ -6,12 +6,17 @@ name: "Check Chirpy Version Update"
 #   git fetch chirpy --tags
 #   git merge vX.Y.Z --squash --allow-unrelated-histories
 #   bundle update
+#
+# 버전 추적: Gemfile의 pessimistic constraint (~> X.Y) 활용
+#   - Gemfile.lock은 .gitignore 처리되어 사용 불가
+#   - 추가 파일 없이 이미 커밋된 Gemfile만 사용
+#   - ~> 7.5 = "현재 7.5 시리즈" → latest가 7.6.x 이상이면 업데이트
 # ─────────────────────────────────────────────
 
 on:
   schedule:
     - cron: "0 9 * * 1" # 매주 월요일 오전 9시 (UTC) = 한국시간 오후 6시
-  workflow_dispatch: # Actions 탭에서 수동 실행 가능
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,27 +30,29 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       needs_update: ${{ steps.compare.outputs.needs_update }}
-      current_version: ${{ steps.current.outputs.version }}
+      current_constraint: ${{ steps.current.outputs.constraint }}
       latest_version: ${{ steps.latest.outputs.version }}
+      latest_minor: ${{ steps.latest.outputs.minor }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Gemfile.lock에서 현재 고정 버전 추출 (예: 7.5.0)
-      - name: Get current version from Gemfile.lock
+      # Gemfile의 ~> X.Y 제약 조건에서 현재 시리즈(X.Y) 추출
+      # 예: gem "jekyll-theme-chirpy", "~> 7.5"  →  constraint=7.5
+      - name: Get current version series from Gemfile
         id: current
         run: |
-          VERSION=$(grep -E "^\s+jekyll-theme-chirpy \(" Gemfile.lock \
-            | grep -oP '\d+\.\d+\.\d+' | head -1)
-          if [ -z "$VERSION" ]; then
-            echo "::error::Gemfile.lock에서 jekyll-theme-chirpy 버전을 찾을 수 없습니다."
+          CONSTRAINT=$(grep 'jekyll-theme-chirpy' Gemfile \
+            | grep -oP '~> \K\d+\.\d+')
+          if [ -z "$CONSTRAINT" ]; then
+            echo "::error::Gemfile에서 jekyll-theme-chirpy의 버전 제약을 찾을 수 없습니다."
             exit 1
           fi
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-          echo "📌 Current version: v${VERSION}"
+          echo "constraint=${CONSTRAINT}" >> $GITHUB_OUTPUT
+          echo "📌 Current series: ~> ${CONSTRAINT} (tracks ${CONSTRAINT}.x)"
 
-      # chirpy-starter GitHub Releases API로 최신 태그 조회
+      # chirpy-starter 최신 릴리즈 태그 조회
       - name: Get latest version from chirpy-starter releases
         id: latest
         run: |
@@ -61,21 +68,26 @@ jobs:
             echo "::error::버전 파싱에 실패했습니다."
             exit 1
           fi
+          # major.minor만 추출 (예: 7.6.0 → 7.6)
+          LATEST_MINOR=$(echo "$LATEST" | cut -d. -f1,2)
           echo "version=${LATEST}" >> $GITHUB_OUTPUT
-          echo "🚀 Latest version: v${LATEST}"
+          echo "minor=${LATEST_MINOR}" >> $GITHUB_OUTPUT
+          echo "🚀 Latest: v${LATEST} (series ${LATEST_MINOR})"
 
-      # 버전 비교
-      - name: Compare versions
+      # 현재 Gemfile 시리즈(~> X.Y)와 최신 시리즈(X.Y) 비교
+      # 같은 시리즈(7.5 == 7.5)면 스킵, 다른 시리즈(7.5 != 7.6)면 업데이트
+      - name: Compare version series
         id: compare
         run: |
-          CURRENT="${{ steps.current.outputs.version }}"
+          CURRENT="${{ steps.current.outputs.constraint }}"
+          LATEST_MINOR="${{ steps.latest.outputs.minor }}"
           LATEST="${{ steps.latest.outputs.version }}"
 
-          if [ "$CURRENT" = "$LATEST" ]; then
-            echo "✅ 이미 최신 버전입니다 (v${LATEST}). 작업을 종료합니다."
+          if [ "$CURRENT" = "$LATEST_MINOR" ]; then
+            echo "✅ 이미 최신 시리즈입니다 (~> ${CURRENT}). 작업을 종료합니다."
             echo "needs_update=false" >> $GITHUB_OUTPUT
           else
-            echo "⬆️ 업데이트 발견: v${CURRENT} → v${LATEST}"
+            echo "⬆️ 새 시리즈 발견: ~> ${CURRENT} → ~> ${LATEST_MINOR} (v${LATEST})"
             echo "needs_update=true" >> $GITHUB_OUTPUT
           fi
 
@@ -87,8 +99,9 @@ jobs:
     if: needs.check-update.outputs.needs_update == 'true'
     runs-on: ubuntu-latest
     env:
-      CURRENT_VERSION: ${{ needs.check-update.outputs.current_version }}
+      CURRENT_CONSTRAINT: ${{ needs.check-update.outputs.current_constraint }}
       LATEST_VERSION: ${{ needs.check-update.outputs.latest_version }}
+      LATEST_MINOR: ${{ needs.check-update.outputs.latest_minor }}
       BRANCH_NAME: update/chirpy-v${{ needs.check-update.outputs.latest_version }}
 
     steps:
@@ -103,12 +116,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # 이미 해당 버전 브랜치가 존재하면 스킵
+      # 동일 버전 브랜치가 이미 있으면 중복 실행 방지
       - name: Check if update branch already exists
         id: branch_check
         run: |
           if git ls-remote --exit-code --heads origin "$BRANCH_NAME" > /dev/null 2>&1; then
-            echo "⚠️ 브랜치 '$BRANCH_NAME' 이 이미 존재합니다. 작업을 건너뜁니다."
+            echo "⚠️ 브랜치 '$BRANCH_NAME' 이 이미 존재합니다. 건너뜁니다."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
@@ -118,50 +131,33 @@ jobs:
         if: steps.branch_check.outputs.exists == 'false'
         run: git checkout -b "$BRANCH_NAME"
 
-      # ── 공식 Upgrade Guide Step 1 (1회성 설정) ──────────
-      # chirpy-starter upstream 원격 저장소 추가
+      # ── 공식 Upgrade Guide Step 1 ──────────────
       - name: Add chirpy-starter as upstream remote
         if: steps.branch_check.outputs.exists == 'false'
         run: |
           git remote add chirpy https://github.com/cotes2020/chirpy-starter.git
-          # assets/lib 서브모듈이 있는 경우 ignore 처리
           git config submodule.assets/lib.ignore all 2>/dev/null || true
-          echo "✅ chirpy upstream 등록 완료"
 
-      # ── 공식 Upgrade Guide Step 2 ──────────────────────
-      # 태그 fetch 후 squash merge 수행
-      - name: Fetch chirpy-starter tags and merge
+      # ── 공식 Upgrade Guide Step 2 ──────────────
+      - name: Fetch tag and squash merge
         if: steps.branch_check.outputs.exists == 'false'
         run: |
-          echo "📥 chirpy-starter 태그 fetch 중..."
+          echo "📥 v${LATEST_VERSION} 태그 fetch 중..."
           git fetch chirpy "v${LATEST_VERSION}" --tags
 
-          echo "🔀 v${LATEST_VERSION} squash merge 중..."
-          # --squash : upstream 커밋들을 하나로 합쳐 적용
-          # --allow-unrelated-histories : 별개 히스토리 병합 허용
-          # -X theirs : 충돌 시 upstream 변경 사항 우선 적용
+          echo "🔀 squash merge 적용 중..."
           git merge "v${LATEST_VERSION}" \
             --squash \
             --allow-unrelated-histories \
             -X theirs \
             --no-commit || true
 
-      # ── 사용자 파일 보존 ─────────────────────────────────
-      # merge로 덮어쓰이지 않아야 할 파일들을 현재 버전(HEAD)으로 복원
+      # 사용자 파일 보존 (merge로 덮어쓰이면 안 되는 것들)
       - name: Restore user-specific files
         if: steps.branch_check.outputs.exists == 'false'
         run: |
-          # 복원할 파일/디렉토리 목록
-          PROTECTED_FILES=(
-            "_config.yml"
-            "_data/contact.yml"
-            "_data/share.yml"
-          )
-          PROTECTED_DIRS=(
-            "_posts"
-            "assets/img"
-            ".github/workflows"
-          )
+          PROTECTED_FILES=("_config.yml" "_data/contact.yml" "_data/share.yml")
+          PROTECTED_DIRS=("_posts" "assets/img" ".github/workflows")
 
           for f in "${PROTECTED_FILES[@]}"; do
             if git ls-files --error-unmatch "$f" 2>/dev/null; then
@@ -169,15 +165,22 @@ jobs:
               echo "🔒 보존됨: $f"
             fi
           done
-
           for d in "${PROTECTED_DIRS[@]}"; do
             if [ -d "$d" ]; then
               git checkout HEAD -- "$d" 2>/dev/null && echo "🔒 보존됨: $d/" || true
             fi
           done
 
-      # ── 공식 Upgrade Guide 마지막 단계 ─────────────────
-      # bundle update로 Gemfile.lock 갱신
+      # Gemfile의 버전 제약을 새 시리즈로 업데이트
+      # ~> 7.5  →  ~> 7.6
+      - name: Update Gemfile version constraint
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          sed -i "s/gem \"jekyll-theme-chirpy\", \"~> ${CURRENT_CONSTRAINT}\"/gem \"jekyll-theme-chirpy\", \"~> ${LATEST_MINOR}\"/" Gemfile
+          echo "📝 Gemfile 제약 업데이트: ~> ${CURRENT_CONSTRAINT} → ~> ${LATEST_MINOR}"
+          grep 'jekyll-theme-chirpy' Gemfile
+
+      # ── 공식 Upgrade Guide 마지막 단계 ──────────
       - name: Setup Ruby
         if: steps.branch_check.outputs.exists == 'false'
         uses: ruby/setup-ruby@v1
@@ -191,42 +194,41 @@ jobs:
           gem install bundler --no-document
           bundle update
 
-      # 최종 커밋 및 푸시
+      # 커밋 & 푸시
       - name: Commit and push
         if: steps.branch_check.outputs.exists == 'false'
         run: |
           git add -A
-
           if git diff --cached --quiet; then
-            echo "⚠️ 변경사항이 없습니다. 이미 최신 상태일 수 있습니다."
+            echo "⚠️ 변경사항이 없습니다."
             exit 0
           fi
+          git commit -m "chore: upgrade chirpy-starter ~> ${CURRENT_CONSTRAINT} → ~> ${LATEST_MINOR}
 
-          git commit -m "chore: upgrade chirpy-starter v${CURRENT_VERSION} → v${LATEST_VERSION}
-
-          - chirpy-starter upstream squash merge (공식 Upgrade Guide 방식)
-          - 사용자 파일 보존: _config.yml, _data/, _posts/, assets/img/, .github/workflows/
-          - bundle update 실행으로 Gemfile.lock 갱신"
+          - chirpy-starter v${LATEST_VERSION} squash merge (공식 Upgrade Guide 방식)
+          - Gemfile 제약 업데이트: ~> ${CURRENT_CONSTRAINT} → ~> ${LATEST_MINOR}
+          - 사용자 파일 보존: _config.yml, _data/, _posts/, assets/img/, .github/workflows/"
 
           git push origin "$BRANCH_NAME"
 
-      # PR 생성 (gh CLI 사용)
+      # PR 생성
       - name: Create Pull Request
         if: steps.branch_check.outputs.exists == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
-            --base main \
+            --base master \
             --head "$BRANCH_NAME" \
-            --title "⬆️ Upgrade chirpy-starter: v${CURRENT_VERSION} → v${LATEST_VERSION}" \
+            --title "⬆️ Upgrade chirpy-starter: ~> ${CURRENT_CONSTRAINT} → ~> ${LATEST_MINOR} (v${LATEST_VERSION})" \
             --label "dependencies,automated" \
             --body "## 🎉 Chirpy Starter 버전 업데이트
 
-          | | Version |
+          | | |
           |:---|:---|
-          | **Before** | \`v${CURRENT_VERSION}\` |
-          | **After**  | \`v${LATEST_VERSION}\` |
+          | **Gemfile 이전** | \`~> ${CURRENT_CONSTRAINT}\` |
+          | **Gemfile 이후** | \`~> ${LATEST_MINOR}\` |
+          | **적용 버전** | \`v${LATEST_VERSION}\` |
 
           ---
 
@@ -243,15 +245,13 @@ jobs:
 
           ### 🔒 자동으로 보존된 사용자 파일
 
-          아래 파일들은 merge 시 현재 버전을 그대로 유지했습니다:
-
           - \`_config.yml\` — 블로그 개인 설정
           - \`_data/contact.yml\`, \`_data/share.yml\`
           - \`_posts/\` — 블로그 포스트 전체
           - \`assets/img/\` — 사용자 이미지
           - \`.github/workflows/\` — GitHub Actions
 
-          > ⚠️ **주의**: \`_config.yml\`에 새로 추가된 설정 키가 있을 수 있으니 반드시 Release Notes를 확인하세요.
+          > ⚠️ **주의**: \`_config.yml\`에 새로 추가된 설정 키가 있을 수 있으니 Release Notes를 반드시 확인하세요.
 
           ---
 
