@@ -1,15 +1,21 @@
 ---
-title: Git 다른 레파지토리 병합
 author: Jihun Kim
-date: 2020-07-24 00:00:00 +0000
-categories: [Git]
-tags: [Git]
+categories:
+- DevEnv
+- Git
 comments: true
-pin: false
+date: 2020-07-24 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Git
+- Repository
+- Merge
+- TIL
+title: Git 다른 레파지토리 병합
 ---
+
 ---
 
 # 다른 레파지토리 Git병합
@@ -31,4 +37,3 @@ $ git push
 ```bash
 $ git reset .gitgnore
 ```
-

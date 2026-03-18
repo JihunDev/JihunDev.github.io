@@ -1,15 +1,21 @@
 ---
-title: ROS Mater, Slave Setting
 author: Jihun Kim
-date: 2021-08-28 00:00:00 +0000
-categories: [ROS]
-tags: [ROS]
+categories:
+- Software
+- ROS
 comments: true
-pin: false
+date: 2021-08-28 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- ROS
+- Network
+- Robotics
+- Setup
+title: ROS Mater, Slave Setting
 ---
+
 ---
 
 # Configuration the .bashrc File 

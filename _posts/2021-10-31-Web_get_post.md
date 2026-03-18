@@ -1,15 +1,22 @@
 ---
-title: GET, POST 방식
 author: Jihun Kim
-date: 2021-10-31 00:00:00 +0000
-categories: []
-tags: []
+categories:
+- Software
+- Web
 comments: true
-pin: false
+date: 2021-10-31 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- HTTP
+- REST
+- GET
+- POST
+- Cheatsheet
+title: GET, POST 방식
 ---
+
 ---
 
 # GET, POST 방식

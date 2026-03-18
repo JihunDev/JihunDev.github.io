@@ -1,15 +1,21 @@
 ---
-title: ubuntu에 Node.js 설치
 author: Jihun Kim
-date: 2020-07-20 00:00:00 +0000
-categories: [Node.js]
-tags: [Node.js, ubuntu]
+categories:
+- DevEnv
+- Node.js
 comments: true
-pin: false
+date: 2020-07-20 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Node.js
+- Ubuntu
+- Install
+- Setup
+title: ubuntu에 Node.js 설치
 ---
+
 ---
 
 ubuntu nodejs 설치 방법

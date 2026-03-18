@@ -1,15 +1,20 @@
 ---
-title: Vim 명령어
 author: Jihun Kim
-date: 2021-07-25 00:00:00 +0000
-categories: [IDE, Vim]
-tags: [Vim]
+categories:
+- DevEnv
+- Editor
 comments: true
-pin: false
+date: 2021-07-25 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Vim
+- Command
+- Cheatsheet
+title: Vim 명령어
 ---
+
 ---
 
 # Command Vim

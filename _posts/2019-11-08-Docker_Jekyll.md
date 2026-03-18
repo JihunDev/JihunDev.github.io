@@ -1,17 +1,24 @@
 ---
-title: Docker로 Jekyll 사용
 author: Jihun Kim
-date: 2019-11-08 20:55:00 +0800
-categories: [Docker]
-tags: [Docker, Jekyll]
+categories:
+- DevEnv
+- Docker
 comments: true
-pin: false
+date: 2019-11-08 20:55:00 +0800
+image:
+  alt: DockerJekyll
+  path: https://i.imgur.com/fpPqT7O.png
 math: false
 mermaid: false
-image:
-  path: https://i.imgur.com/fpPqT7O.png
-  alt: DockerJekyll
+pin: false
+tags:
+- Docker
+- Jekyll
+- Blog
+- Setup
+title: Docker로 Jekyll 사용
 ---
+
 ---
 
 Docker로 Jekyll 사용하여 홈페이지 관리

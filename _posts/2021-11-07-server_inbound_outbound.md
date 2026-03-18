@@ -1,15 +1,21 @@
 ---
-title: Inbound, Outbound란
 author: Jihun Kim
-date: 2021-11-07 00:00:00 +0000
-categories: [Server]
-tags: [Server]
+categories:
+- Software
+- Network
 comments: true
-pin: false
+date: 2021-11-07 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Server
+- Network
+- Traffic
+- Cheatsheet
+title: Inbound, Outbound란
 ---
+
 ---
 
 - Inbound

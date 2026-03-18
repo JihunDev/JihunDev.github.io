@@ -1,15 +1,21 @@
 ---
-title: Azure Kincet Sensor DK Ubuntu 설치 방법
 author: Jihun Kim
-date: 2021-09-26 00:00:00 +0000
-categories: [Device, Kincet]
-tags: [Kincet]
+categories:
+- Platform
+- Sensor
 comments: true
-pin: false
+date: 2021-09-26 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Kinect
+- Azure
+- Ubuntu
+- Install
+title: Azure Kincet Sensor DK Ubuntu 설치 방법
 ---
+
 ---
 
 # info

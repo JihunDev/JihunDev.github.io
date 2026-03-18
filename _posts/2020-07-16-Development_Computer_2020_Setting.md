@@ -1,15 +1,20 @@
 ---
-title: 2020 My Computer Setting
 author: Jihun Kim
-date: 2020-07-16 20:55:00 +0800
-categories: [Device]
-tags: [Device, Mac]
+categories:
+- DevEnv
+- Tools
 comments: true
-pin: false
+date: 2020-07-16 20:55:00 +0800
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Mac
+- Setup
+- Dotfiles
+title: 2020 My Computer Setting
 ---
+
 ---
 
 2020년 컴퓨터 세팅

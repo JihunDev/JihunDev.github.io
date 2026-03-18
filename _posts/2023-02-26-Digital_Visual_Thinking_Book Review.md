@@ -1,15 +1,20 @@
 ---
-title:  디지털 비주얼 씽킹 서평
 author: Jihun Kim
-date: 2023-02-26 00:00:00 +0000
-categories: [Book, 컴퓨터/모바일]
-tags: [Book]
+categories:
+- Book
+- Productivity
 comments: true
-pin: false
+date: 2023-02-26 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- BookReview
+- VisualThinking
+- Productivity
+title: 디지털 비주얼 씽킹 서평
 ---
+
 ---
 
 

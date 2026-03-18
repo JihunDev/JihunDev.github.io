@@ -1,15 +1,21 @@
 ---
-title: AWS Nginx 413 Request Entity Too Large Err
 author: Jihun Kim
-date: 2021-09-20 00:00:00 +0000
-categories: [AWS, Nginx]
-tags: [AWS, Nginx]
+categories:
+- Platform
+- AWS
 comments: true
-pin: false
+date: 2021-09-20 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- AWS
+- Nginx
+- Config
+- Troubleshooting
+title: AWS Nginx 413 Request Entity Too Large Err
 ---
+
 ---
 
 # Info

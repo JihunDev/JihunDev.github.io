@@ -1,15 +1,21 @@
 ---
-title: SPI (Serial Peripheral Interface Bus)
 author: Jihun Kim
+categories:
+- Embedded
+- Interface
+comments: true
 date: 2019-11-13 20:55:00 +0800
-categories: [HW, Interface]
-tags: [HPI, HW]
-pin: false
 math: false
 mermaid: false
-comments: true
-
+pin: false
+tags:
+- SPI
+- Serial-Protocol
+- Embedded
+- Cheatsheet
+title: SPI (Serial Peripheral Interface Bus)
 ---
+
 ---
 
 SPI Interface 설명

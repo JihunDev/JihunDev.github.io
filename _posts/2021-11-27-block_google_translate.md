@@ -1,15 +1,21 @@
 ---
-title: 구글 번역시 특정 부분 번역 제외 하기
 author: Jihun Kim
-date: 2021-11-27 00:00:00 +0000
-categories: [HTML]
-tags: [html]
+categories:
+- Software
+- Web
 comments: true
-pin: false
+date: 2021-11-27 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- HTML
+- i18n
+- Frontend
+- TIL
+title: 구글 번역시 특정 부분 번역 제외 하기
 ---
+
 ---
 
 ## **부분적으로 번역 제외하기**

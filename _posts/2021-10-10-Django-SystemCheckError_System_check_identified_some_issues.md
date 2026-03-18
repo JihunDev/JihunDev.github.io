@@ -1,15 +1,21 @@
 ---
-title: Django SystemCheckError System check identified some issues
 author: Jihun Kim
-date: 2021-10-10 00:00:00 +0000
-categories: [Django]
-tags: [Django]
+categories:
+- Software
+- Django
 comments: true
-pin: false
+date: 2021-10-10 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Django
+- Python
+- Backend
+- Troubleshooting
+title: Django SystemCheckError System check identified some issues
 ---
+
 ---
 
 ```python

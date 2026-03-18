@@ -1,15 +1,21 @@
 ---
-title: HHKB DipSwitch 설정
 author: Jihun Kim
+categories:
+- DevEnv
+- Tools
+comments: true
 date: 2020-07-15 20:55:00 +0800
-categories: [Device]
-tags: [Device, HHKB]
-pin: false
 math: false
 mermaid: false
-comments: true
-
+pin: false
+tags:
+- HHKB
+- Keyboard
+- Hardware
+- Setup
+title: HHKB DipSwitch 설정
 ---
+
 ---
 
 HHKB Dipswitch 설정

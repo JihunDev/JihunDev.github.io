@@ -1,15 +1,20 @@
 ---
-title: Rust Web Development 서평
 author: Jihun Kim
-date: 2024-09-29 00:00:00 +0000
-categories: [Book, 컴퓨터/모바일]
-tags: [Book]
+categories:
+- Book
+- Tech
 comments: true
-pin: false
+date: 2024-09-29 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- BookReview
+- Rust
+- WebDevelopment
+title: Rust Web Development 서평
 ---
+
 ---
 
 # Rust Web Development 서평

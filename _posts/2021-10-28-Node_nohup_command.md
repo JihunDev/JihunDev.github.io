@@ -1,15 +1,21 @@
 ---
-title: Node nohup Command
 author: Jihun Kim
-date: 2021-10-28 00:00:00 +0000
-categories: [Node.js]
-tags: [Node.js]
+categories:
+- DevEnv
+- Linux
 comments: true
-pin: false
+date: 2021-10-28 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Linux
+- nohup
+- Process
+- Node.js
+title: Node nohup Command
 ---
+
 ---
 
 # 실행 방법

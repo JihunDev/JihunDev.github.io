@@ -1,15 +1,21 @@
 ---
-title: Django Invalid password format or unknown hashing algorithm
 author: Jihun Kim
-date: 2021-10-23 00:00:00 +0000
-categories: [Django]
-tags: [Django]
+categories:
+- Software
+- Django
 comments: true
-pin: false
+date: 2021-10-23 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Django
+- Python
+- Auth
+- Troubleshooting
+title: Django Invalid password format or unknown hashing algorithm
 ---
+
 ---
 
 - django를 통해 회워가입을 구현할 때 당면할 수 있는 문제

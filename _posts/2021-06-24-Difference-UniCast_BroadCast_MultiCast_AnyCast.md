@@ -1,15 +1,22 @@
 ---
-title: UniCast & BroadCast & MultiCast 차이점
 author: Jihun Kim
-date: 2021-06-24 00:00:00 +0000
-categories: [Network]
-tags: [Network, UniCast, BroadCast, MultiCast]
+categories:
+- Software
+- Network
 comments: true
-pin: false
+date: 2021-06-24 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Network
+- Protocol
+- Multicast
+- Broadcast
+- Cheatsheet
+title: UniCast & BroadCast & MultiCast 차이점
 ---
+
 ---
 
 네트워크상 통신하는 방법을 구분하는 방법

@@ -1,15 +1,21 @@
 ---
-title: Binary, Grayscale, Color
 author: Jihun Kim
-date: 2021-07-18 00:00:00 +0000
-categories: [Image Processing]
-tags: [Binary, Grayscale, Color]
+categories:
+- AI-ML
+- Vision
 comments: true
-pin: false
+date: 2021-07-18 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- ImageProcessing
+- CV
+- Color
+- Cheatsheet
+title: Binary, Grayscale, Color
 ---
+
 ---
 
 # Binary, Grayscale, Color

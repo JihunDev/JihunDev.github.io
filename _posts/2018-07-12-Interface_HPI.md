@@ -1,15 +1,21 @@
 ---
-title: HPI (Host Port Interface)
 author: Jihun Kim
+categories:
+- Embedded
+- Interface
+comments: true
 date: 2018-08-09 20:55:00 +0800
-categories: [HW, Interface]
-tags: [HPI, HW]
-pin: false
 math: false
 mermaid: false
-comments: true
-
+pin: false
+tags:
+- HPI
+- Parallel-Protocol
+- DSP
+- Cheatsheet
+title: HPI (Host Port Interface)
 ---
+
 ---
 
 HPI Interface 설명

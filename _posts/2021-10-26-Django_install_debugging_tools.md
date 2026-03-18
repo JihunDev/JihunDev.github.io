@@ -1,15 +1,21 @@
 ---
-title: Django install Debugging Tools
 author: Jihun Kim
-date: 2021-10-26 00:00:00 +0000
-categories: [Django]
-tags: [Django]
+categories:
+- Software
+- Django
 comments: true
-pin: false
+date: 2021-10-26 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Django
+- Python
+- Debug
+- Setup
+title: Django install Debugging Tools
 ---
+
 ---
 
 # install

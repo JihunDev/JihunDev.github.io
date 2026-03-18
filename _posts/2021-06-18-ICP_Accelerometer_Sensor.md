@@ -1,15 +1,21 @@
 ---
-title: Accelerometer Sensor
 author: Jihun Kim
-date: 2021-06-18 00:00:00 +0000
-categories: [HW, Sensor]
-tags: [Sensor, Accelerometer]
+categories:
+- Embedded
+- Sensor
 comments: true
-pin: false
+date: 2021-06-18 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- ICP
+- Accelerometer
+- Vibration
+- Sensor
+title: Accelerometer Sensor
 ---
+
 ---
 
 # Accelerometer Sensor

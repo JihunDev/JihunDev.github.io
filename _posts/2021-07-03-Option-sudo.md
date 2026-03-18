@@ -1,15 +1,21 @@
 ---
-title: sudo -S -kS 옵션 
 author: Jihun Kim
-date: 2021-07-03 00:00:00 +0000
-categories: [Linux, Command]
-tags: [Linux, Command]
+categories:
+- DevEnv
+- Linux
 comments: true
-pin: false
+date: 2021-07-03 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Linux
+- sudo
+- Command
+- TIL
+title: sudo -S -kS 옵션
 ---
+
 ---
 
 ## echo '비밀번호' | sudo -S 명령어

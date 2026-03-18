@@ -1,15 +1,20 @@
 ---
-title: 자주 쓰는 Git Command
 author: Jihun Kim
-date: 2021-08-22 00:00:00 +0000
-categories: [Git]
-tags: [Git]
+categories:
+- DevEnv
+- Git
 comments: true
-pin: false
+date: 2021-08-22 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- Git
+- Command
+- Cheatsheet
+title: 자주 쓰는 Git Command
 ---
+
 ---
 # 자주 쓰는 Git Command
 

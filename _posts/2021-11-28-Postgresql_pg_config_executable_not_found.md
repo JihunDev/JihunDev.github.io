@@ -1,15 +1,21 @@
 ---
-title: Postgresql Error pg_config executable not found.
 author: Jihun Kim
-date: 2021-11-28 00:00:00 +0000
-categories: [Postgresql]
-tags: [Postgresql]
+categories:
+- Software
+- Database
 comments: true
-pin: false
+date: 2021-11-28 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- PostgreSQL
+- Python
+- psycopg2
+- Troubleshooting
+title: Postgresql Error pg_config executable not found.
 ---
+
 ---
 
 # 오류 메세지

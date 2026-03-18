@@ -1,15 +1,22 @@
 ---
-title: Library & API & Framework & Engine & SDK
 author: Jihun Kim
-date: 2021-07-01 00:00:00 +0000
-categories: [Computer Science]
-tags: [Library, API, Framework, Engine, SDK]
+categories:
+- Software
+- CS
 comments: true
-pin: false
+date: 2021-07-01 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- API
+- SDK
+- Framework
+- Architecture
+- Cheatsheet
+title: Library & API & Framework & Engine & SDK
 ---
+
 ---
 
 # Library & API & Framework & Engine & SDK
@@ -66,8 +73,3 @@ mermaid: false
 ## SDK
 - 소프트웨어 개발 도구
 - 지금은 의미가 전용되어 API와 거의 같은 뜻
-
-
-
- 
-

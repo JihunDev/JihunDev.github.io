@@ -1,15 +1,22 @@
 ---
-title: Vcc, Vee, Vdd, Vss
 author: Jihun Kim
-date: 2021-07-17 00:00:00 +0000
-categories: [HW, Electronic]
-tags: [Vcc, Vee, Vdd, Vss]
+categories:
+- Embedded
+- Electronic
 comments: true
-pin: false
+date: 2021-07-17 00:00:00 +0000
 math: false
 mermaid: false
-
+pin: false
+tags:
+- BJT
+- FET
+- Power
+- Circuit
+- Cheatsheet
+title: Vcc, Vee, Vdd, Vss
 ---
+
 ---
 
 # Vcc Vee Vdd Vss
