@@ -52,22 +52,35 @@ jobs:
           echo "constraint=${CONSTRAINT}" >> $GITHUB_OUTPUT
           echo "📌 Current series: ~> ${CONSTRAINT} (tracks ${CONSTRAINT}.x)"
 
-      # chirpy-starter 최신 릴리즈 태그 조회
-      - name: Get latest version from chirpy-starter releases
+      # chirpy-starter 최신 태그 조회 (/tags API 사용)
+      # /releases/latest 대신 /tags를 사용하는 이유:
+      #   - releases/latest는 공식 Release가 없거나 pre-release만 있을 때 404 반환
+      #   - tags는 git push --tags로 올라간 태그를 항상 조회 가능
+      - name: Get latest version from chirpy-starter tags
         id: latest
         run: |
-          RESPONSE=$(curl -sf \
+          HTTP_CODE=$(curl -s -o /tmp/chirpy_tags.json -w "%{http_code}" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/cotes2020/chirpy-starter/releases/latest")
-          if [ $? -ne 0 ]; then
-            echo "::error::chirpy-starter 최신 버전 조회에 실패했습니다."
+            "https://api.github.com/repos/cotes2020/chirpy-starter/tags?per_page=10")
+
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "::error::GitHub API 호출 실패 (HTTP ${HTTP_CODE})"
+            cat /tmp/chirpy_tags.json
             exit 1
           fi
-          LATEST=$(echo "$RESPONSE" | jq -r '.tag_name' | sed 's/^v//')
+
+          # vX.Y.Z 형태의 태그 중 가장 최신(semver 정렬) 선택
+          LATEST=$(jq -r '.[].name' /tmp/chirpy_tags.json \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | sort -V | tail -1 \
+            | sed 's/^v//')
+
           if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
-            echo "::error::버전 파싱에 실패했습니다."
+            echo "::error::유효한 버전 태그를 찾을 수 없습니다."
+            cat /tmp/chirpy_tags.json
             exit 1
           fi
+
           # major.minor만 추출 (예: 7.6.0 → 7.6)
           LATEST_MINOR=$(echo "$LATEST" | cut -d. -f1,2)
           echo "version=${LATEST}" >> $GITHUB_OUTPUT
