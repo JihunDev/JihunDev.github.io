@@ -8,9 +8,7 @@ comments: true
 pin: false
 math: false
 mermaid: false
-image:
-  src:
-  alt:
+
 ---
 ---
 # 자주 쓰는 Git Command

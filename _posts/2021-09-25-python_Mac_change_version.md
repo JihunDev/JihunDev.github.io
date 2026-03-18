@@ -8,9 +8,7 @@ comments: true
 pin: false
 math: false
 mermaid: fals경
-image:
-  src:
-  alt:
+
 ---
 ---
 

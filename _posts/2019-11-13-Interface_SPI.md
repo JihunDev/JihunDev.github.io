@@ -8,9 +8,7 @@ pin: false
 math: false
 mermaid: false
 comments: true
-image:
-  src: 
-  alt: 
+
 ---
 ---
 

@@ -9,7 +9,7 @@ pin: false
 math: false
 mermaid: false
 image:
-  src: https://i.imgur.com/fpPqT7O.png
+  path: https://i.imgur.com/fpPqT7O.png
   alt: DockerJekyll
 ---
 ---
