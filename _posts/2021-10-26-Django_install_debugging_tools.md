@@ -2,7 +2,7 @@
 author: Jihun Kim
 categories:
 - Software
-- Django
+- Backend
 comments: true
 date: 2021-10-26 00:00:00 +0000
 math: false
@@ -11,7 +11,6 @@ pin: false
 tags:
 - Django
 - Python
-- Debug
 - Setup
 title: Django install Debugging Tools
 ---

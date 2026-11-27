@@ -1,18 +1,17 @@
 ---
 author: Jihun Kim
 categories:
-- Platform
-- RaspberryPi
+- Embedded
+- IoT
 comments: true
 date: 2020-07-24 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- RaspberryPi
+- Raspberry Pi
 - Bluetooth
 - Linux
-- Setup
 title: RaspberryPi Bluetooth Pairing
 ---
 

@@ -1,8 +1,8 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
-- Node.js
+- Dev Environment
+- Setup
 comments: true
 date: 2020-07-20 00:00:00 +0000
 math: false
@@ -11,9 +11,8 @@ pin: false
 tags:
 - Node.js
 - Ubuntu
-- Install
 - Setup
-title: ubuntu에 Node.js 설치
+title: Ubuntu에 Node.js 설치
 ---
 
 ---

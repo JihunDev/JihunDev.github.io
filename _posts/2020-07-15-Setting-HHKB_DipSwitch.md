@@ -1,17 +1,14 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
-- Tools
+- Dev Environment
+- Setup
 comments: true
 date: 2020-07-15 20:55:00 +0800
 math: false
 mermaid: false
 pin: false
 tags:
-- HHKB
-- Keyboard
-- Hardware
 - Setup
 title: HHKB DipSwitch 설정
 ---

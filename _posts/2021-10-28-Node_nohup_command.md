@@ -1,7 +1,7 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
+- Dev Environment
 - Linux
 comments: true
 date: 2021-10-28 00:00:00 +0000
@@ -10,8 +10,7 @@ mermaid: false
 pin: false
 tags:
 - Linux
-- nohup
-- Process
+- Command
 - Node.js
 title: Node nohup Command
 ---

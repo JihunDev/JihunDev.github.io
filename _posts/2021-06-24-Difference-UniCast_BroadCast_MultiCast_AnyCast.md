@@ -10,9 +10,6 @@ mermaid: false
 pin: false
 tags:
 - Network
-- Protocol
-- Multicast
-- Broadcast
 - Cheatsheet
 title: UniCast & BroadCast & MultiCast 차이점
 ---

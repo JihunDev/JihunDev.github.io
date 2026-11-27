@@ -1,7 +1,7 @@
 ---
 author: Jihun Kim
 categories:
-- Book
+- Book Review
 - Productivity
 comments: true
 date: 2023-02-26 00:00:00 +0000
@@ -9,8 +9,6 @@ math: false
 mermaid: false
 pin: false
 tags:
-- BookReview
-- VisualThinking
 - Productivity
 title: 디지털 비주얼 씽킹 서평
 ---

@@ -1,7 +1,7 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
+- Dev Environment
 - Linux
 comments: true
 date: 2021-07-03 00:00:00 +0000
@@ -10,9 +10,7 @@ mermaid: false
 pin: false
 tags:
 - Linux
-- sudo
 - Command
-- TIL
 title: sudo -S -kS 옵션
 ---
 

@@ -10,9 +10,6 @@ mermaid: false
 pin: false
 tags:
 - HTTP
-- REST
-- GET
-- POST
 - Cheatsheet
 title: GET, POST 방식
 ---

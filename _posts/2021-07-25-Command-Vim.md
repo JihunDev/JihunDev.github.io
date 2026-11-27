@@ -1,15 +1,14 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
-- Editor
+- Dev Environment
+- Linux
 comments: true
 date: 2021-07-25 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- Vim
 - Command
 - Cheatsheet
 title: Vim 명령어

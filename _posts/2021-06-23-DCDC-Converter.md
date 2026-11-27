@@ -2,15 +2,13 @@
 author: Jihun Kim
 categories:
 - Embedded
-- Electronic
+- Electronics
 comments: true
 date: 2021-06-23 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- DCDC-Converter
-- Power
 - Circuit
 - Cheatsheet
 title: DC/DC Converter

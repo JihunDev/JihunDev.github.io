@@ -2,17 +2,14 @@
 author: Jihun Kim
 categories:
 - Embedded
-- DAQ
+- Sensor
 comments: true
 date: 2021-07-10 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- DAQ
-- Sensor
-- ADC
-- Signal
+- Data Acquisition
 title: DAQ(Data Acquisition)
 ---
 

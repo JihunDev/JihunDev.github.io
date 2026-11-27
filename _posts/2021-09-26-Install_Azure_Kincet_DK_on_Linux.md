@@ -1,7 +1,7 @@
 ---
 author: Jihun Kim
 categories:
-- Platform
+- Embedded
 - Sensor
 comments: true
 date: 2021-09-26 00:00:00 +0000
@@ -9,11 +9,9 @@ math: false
 mermaid: false
 pin: false
 tags:
-- Kinect
-- Azure
 - Ubuntu
-- Install
-title: Azure Kincet Sensor DK Ubuntu 설치 방법
+- Setup
+title: Azure Kinect Sensor DK Ubuntu 설치 방법
 ---
 
 ---
@@ -65,7 +63,7 @@ deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
 # deb-src [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
 ```
 
-## 2. Install Kincet Package
+## 2. Install Kinect Package
 
 - Repository Error가 없을시 실행
 

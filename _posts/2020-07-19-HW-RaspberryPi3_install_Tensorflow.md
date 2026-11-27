@@ -1,18 +1,17 @@
 ---
 author: Jihun Kim
 categories:
-- Platform
-- RaspberryPi
+- Embedded
+- IoT
 comments: true
 date: 2020-07-19 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- RaspberryPi
-- TensorFlow
+- Raspberry Pi
 - Python
-- Install
+- Setup
 title: RaspberryPi 3B+에 TensorFlow 설치
 ---
 

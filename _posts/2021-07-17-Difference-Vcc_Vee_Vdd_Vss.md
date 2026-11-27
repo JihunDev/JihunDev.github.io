@@ -2,16 +2,13 @@
 author: Jihun Kim
 categories:
 - Embedded
-- Electronic
+- Electronics
 comments: true
 date: 2021-07-17 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- BJT
-- FET
-- Power
 - Circuit
 - Cheatsheet
 title: Vcc, Vee, Vdd, Vss
