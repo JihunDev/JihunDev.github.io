@@ -9,9 +9,7 @@ math: false
 mermaid: false
 pin: false
 tags:
-- Server
 - Network
-- Traffic
 - Cheatsheet
 title: Inbound, Outbound란
 ---

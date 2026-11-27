@@ -9,10 +9,7 @@ math: false
 mermaid: false
 pin: false
 tags:
-- ICP
-- Accelerometer
-- Vibration
-- Sensor
+- Data Acquisition
 title: Accelerometer Sensor
 ---
 

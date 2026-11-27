@@ -2,7 +2,7 @@
 author: Jihun Kim
 categories:
 - Software
-- ROS
+- Network
 comments: true
 date: 2021-08-28 00:00:00 +0000
 math: false
@@ -11,9 +11,8 @@ pin: false
 tags:
 - ROS
 - Network
-- Robotics
 - Setup
-title: ROS Mater, Slave Setting
+title: ROS Master, Slave Setting
 ---
 
 ---

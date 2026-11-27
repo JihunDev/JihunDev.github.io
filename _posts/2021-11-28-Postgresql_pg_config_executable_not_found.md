@@ -2,7 +2,7 @@
 author: Jihun Kim
 categories:
 - Software
-- Database
+- Backend
 comments: true
 date: 2021-11-28 00:00:00 +0000
 math: false
@@ -11,9 +11,8 @@ pin: false
 tags:
 - PostgreSQL
 - Python
-- psycopg2
 - Troubleshooting
-title: Postgresql Error pg_config executable not found.
+title: PostgreSQL Error pg_config executable not found
 ---
 
 ---

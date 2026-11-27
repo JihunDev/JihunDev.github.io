@@ -9,9 +9,7 @@ math: false
 mermaid: false
 pin: false
 tags:
-- HPI
-- Parallel-Protocol
-- DSP
+- Protocol
 - Cheatsheet
 title: HPI (Host Port Interface)
 ---

@@ -1,18 +1,16 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
-- Python
+- Dev Environment
+- Setup
 comments: true
 date: 2021-09-25 00:00:00 +0000
 math: false
-mermaid: fals경
+mermaid: false
 pin: false
 tags:
 - Python
 - Mac
-- brew
-- TIL
 title: Mac Python Version 변경
 ---
 

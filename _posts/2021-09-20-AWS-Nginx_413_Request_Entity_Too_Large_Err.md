@@ -1,17 +1,16 @@
 ---
 author: Jihun Kim
 categories:
-- Platform
-- AWS
+- Software
+- Backend
 comments: true
 date: 2021-09-20 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- AWS
 - Nginx
-- Config
+- AWS
 - Troubleshooting
 title: AWS Nginx 413 Request Entity Too Large Err
 ---

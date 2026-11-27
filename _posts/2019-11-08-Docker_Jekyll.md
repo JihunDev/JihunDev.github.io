@@ -1,8 +1,8 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
-- Docker
+- Dev Environment
+- Setup
 comments: true
 date: 2019-11-08 20:55:00 +0800
 image:
@@ -13,8 +13,6 @@ mermaid: false
 pin: false
 tags:
 - Docker
-- Jekyll
-- Blog
 - Setup
 title: Docker로 Jekyll 사용
 ---

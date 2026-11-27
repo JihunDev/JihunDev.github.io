@@ -1,7 +1,7 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
+- Dev Environment
 - Git
 comments: true
 date: 2021-08-22 00:00:00 +0000

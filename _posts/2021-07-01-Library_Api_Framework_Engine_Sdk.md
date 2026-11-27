@@ -2,17 +2,14 @@
 author: Jihun Kim
 categories:
 - Software
-- CS
+- Computer Science
 comments: true
 date: 2021-07-01 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- API
-- SDK
-- Framework
-- Architecture
+- Software Design
 - Cheatsheet
 title: Library & API & Framework & Engine & SDK
 ---

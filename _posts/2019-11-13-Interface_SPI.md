@@ -9,9 +9,7 @@ math: false
 mermaid: false
 pin: false
 tags:
-- SPI
-- Serial-Protocol
-- Embedded
+- Protocol
 - Cheatsheet
 title: SPI (Serial Peripheral Interface Bus)
 ---

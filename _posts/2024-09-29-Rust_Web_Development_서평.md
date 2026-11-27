@@ -1,17 +1,15 @@
 ---
 author: Jihun Kim
 categories:
-- Book
-- Tech
+- Book Review
+- Development
 comments: true
 date: 2024-09-29 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- BookReview
 - Rust
-- WebDevelopment
 title: Rust Web Development 서평
 ---
 

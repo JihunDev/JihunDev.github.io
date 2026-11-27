@@ -1,7 +1,7 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
+- Dev Environment
 - Git
 comments: true
 date: 2020-07-24 00:00:00 +0000
@@ -10,9 +10,6 @@ mermaid: false
 pin: false
 tags:
 - Git
-- Repository
-- Merge
-- TIL
 title: Git 다른 레파지토리 병합
 ---
 

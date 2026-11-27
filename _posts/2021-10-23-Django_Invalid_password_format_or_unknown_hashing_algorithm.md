@@ -2,7 +2,7 @@
 author: Jihun Kim
 categories:
 - Software
-- Django
+- Backend
 comments: true
 date: 2021-10-23 00:00:00 +0000
 math: false
@@ -11,7 +11,6 @@ pin: false
 tags:
 - Django
 - Python
-- Auth
 - Troubleshooting
 title: Django Invalid password format or unknown hashing algorithm
 ---

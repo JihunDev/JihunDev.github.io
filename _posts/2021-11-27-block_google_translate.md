@@ -10,10 +10,7 @@ mermaid: false
 pin: false
 tags:
 - HTML
-- i18n
-- Frontend
-- TIL
-title: 구글 번역시 특정 부분 번역 제외 하기
+title: 구글 번역 시 특정 부분 번역 제외하기
 ---
 
 ---

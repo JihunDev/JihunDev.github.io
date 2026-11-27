@@ -1,8 +1,8 @@
 ---
 author: Jihun Kim
 categories:
-- DevEnv
-- Tools
+- Dev Environment
+- Setup
 comments: true
 date: 2020-07-16 20:55:00 +0800
 math: false
@@ -11,7 +11,6 @@ pin: false
 tags:
 - Mac
 - Setup
-- Dotfiles
 title: 2020 My Computer Setting
 ---
 

@@ -1,17 +1,15 @@
 ---
 author: Jihun Kim
 categories:
-- AI-ML
-- Vision
+- Software
+- Computer Science
 comments: true
 date: 2021-07-18 00:00:00 +0000
 math: false
 mermaid: false
 pin: false
 tags:
-- ImageProcessing
-- CV
-- Color
+- Computer Vision
 - Cheatsheet
 title: Binary, Grayscale, Color
 ---

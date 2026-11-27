@@ -10,9 +10,6 @@ mermaid: false
 pin: false
 tags:
 - Bluetooth
-- BLE
-- iBeacon
-- HM-10
 title: HM-10 Bluetooth 모듈로 iBeacon 만들기
 ---
 
