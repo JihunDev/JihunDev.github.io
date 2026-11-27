@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Gemfile의 ~> X.Y 제약 조건에서 현재 시리즈(X.Y) 추출
       # 예: gem "jekyll-theme-chirpy", "~> 7.5"  →  constraint=7.5
@@ -119,7 +119,7 @@ jobs:
 
     steps:
       - name: Checkout (full history 필요)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -164,6 +164,18 @@ jobs:
             --allow-unrelated-histories \
             -X theirs \
             --no-commit || true
+
+      # assets/lib(서브모듈)은 checkout되지 않은 상태라 자동 merge가 불가능해
+      # 충돌로 남고, 이후 git add -A가 exit 128로 실패함
+      # → upstream 태그가 가리키는 커밋으로 index에 직접 기록하여 해결
+      - name: Resolve assets/lib submodule conflict
+        if: steps.branch_check.outputs.exists == 'false'
+        run: |
+          if SHA=$(git rev-parse --verify --quiet "v${LATEST_VERSION}:assets/lib"); then
+            git update-index --add --cacheinfo "160000,${SHA},assets/lib"
+            mkdir -p assets/lib
+            echo "🔗 assets/lib → ${SHA}"
+          fi
 
       # 사용자 파일 보존 (merge로 덮어쓰이면 안 되는 것들)
       - name: Restore user-specific files
@@ -230,6 +242,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # 라벨이 없으면 gh pr create가 실패하므로 먼저 생성 (있으면 갱신)
+          gh label create dependencies --color 0366d6 --force
+          gh label create automated --color ededed --force
+
           gh pr create \
             --base master \
             --head "$BRANCH_NAME" \
